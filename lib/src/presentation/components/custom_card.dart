@@ -18,12 +18,12 @@ class CustomCard extends StatelessWidget {
   }) : super(key: key);
 
   factory CustomCard.bordered({
-    required final BuildContext context,
-    required final Widget child,
-    final EdgeInsetsGeometry? margin,
-    final double? height,
-    final double? width,
-    final BorderRadius? borderRadius,
+    required BuildContext context,
+    required Widget child,
+    EdgeInsetsGeometry? margin,
+    double? height,
+    double? width,
+    BorderRadius? borderRadius,
   }) {
     return CustomCard(
       margin: margin,
@@ -66,44 +66,25 @@ class CustomCard extends StatelessWidget {
         boxShadow: <BoxShadow>[
           if (Theme.of(context).brightness == Brightness.light)
             BoxShadow(
-              blurRadius: 8,
+              blurRadius: kCorner,
               color: Theme.of(context).primaryColor.withAlpha(20),
             )
         ],
       ),
       child: ClipRRect(
         borderRadius:
-            borderRadius ?? const BorderRadius.all(Radius.circular(10)),
+            borderRadius ?? const BorderRadius.all(Radius.circular(kCorner)),
         child: Material(
           color: Colors.transparent,
           elevation: elevation ?? 0.0,
           child: InkWell(
-            borderRadius:
-                borderRadius ?? const BorderRadius.all(Radius.circular(20)),
+            borderRadius: borderRadius ??
+                const BorderRadius.all(Radius.circular(kCorner)),
             onTap: onTap,
             child: child,
           ),
         ),
       ),
-    );
-  }
-}
-
-class CustomCardTopRightCorner extends StatelessWidget {
-  const CustomCardTopRightCorner({required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomCard(
-      borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(8),
-        topRight: Radius.circular(8),
-        bottomLeft: Radius.circular(8),
-        bottomRight: Radius.circular(8),
-      ),
-      child: child,
     );
   }
 }

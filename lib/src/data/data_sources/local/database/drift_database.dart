@@ -20,6 +20,7 @@ part 'drift_database.g.dart';
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
+  @override
   int get schemaVersion => 1;
 }
 

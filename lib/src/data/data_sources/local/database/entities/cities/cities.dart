@@ -6,9 +6,9 @@ class Cities extends Table {
 
   TextColumn get name => text().nullable()();
 
-  TextColumn get lat => text().nullable()();
+  RealColumn get lat => real().nullable()();
 
-  TextColumn get lon => text().nullable()();
+  RealColumn get lon => real().nullable()();
 
   TextColumn get country => text().nullable()();
 

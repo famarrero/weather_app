@@ -250,10 +250,10 @@ class S {
     );
   }
 
-  /// `Desde el servidor`
+  /// `From server`
   String get fromApi {
     return Intl.message(
-      'Desde el servidor',
+      'From server',
       name: 'fromApi',
       desc: '',
       args: [],
@@ -325,6 +325,56 @@ class S {
     return Intl.message(
       'Field required',
       name: 'fieldRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No results found`
+  String get noResultsFound {
+    return Intl.message(
+      'No results found',
+      name: 'noResultsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `State`
+  String get state {
+    return Intl.message(
+      'State',
+      name: 'state',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Country code`
+  String get countryCode {
+    return Intl.message(
+      'Country code',
+      name: 'countryCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My cities`
+  String get myCities {
+    return Intl.message(
+      'My cities',
+      name: 'myCities',
       desc: '',
       args: [],
     );

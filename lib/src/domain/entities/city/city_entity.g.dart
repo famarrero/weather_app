@@ -1,24 +1,30 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'city_model.dart';
+part of 'city_entity.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<CityModel> _$cityModelSerializer = new _$CityModelSerializer();
+Serializer<CityEntity> _$cityEntitySerializer = new _$CityEntitySerializer();
 
-class _$CityModelSerializer implements StructuredSerializer<CityModel> {
+class _$CityEntitySerializer implements StructuredSerializer<CityEntity> {
   @override
-  final Iterable<Type> types = const [CityModel, _$CityModel];
+  final Iterable<Type> types = const [CityEntity, _$CityEntity];
   @override
-  final String wireName = 'CityModel';
+  final String wireName = 'CityEntity';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, CityModel object,
+  Iterable<Object?> serialize(Serializers serializers, CityEntity object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
     value = object.name;
     if (value != null) {
       result
@@ -58,9 +64,9 @@ class _$CityModelSerializer implements StructuredSerializer<CityModel> {
   }
 
   @override
-  CityModel deserialize(Serializers serializers, Iterable<Object?> serialized,
+  CityEntity deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new CityModelBuilder();
+    final result = new CityEntityBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -68,6 +74,10 @@ class _$CityModelSerializer implements StructuredSerializer<CityModel> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
         case 'name':
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -95,7 +105,9 @@ class _$CityModelSerializer implements StructuredSerializer<CityModel> {
   }
 }
 
-class _$CityModel extends CityModel {
+class _$CityEntity extends CityEntity {
+  @override
+  final int? id;
   @override
   final String? name;
   @override
@@ -107,23 +119,25 @@ class _$CityModel extends CityModel {
   @override
   final String? state;
 
-  factory _$CityModel([void Function(CityModelBuilder)? updates]) =>
-      (new CityModelBuilder()..update(updates))._build();
+  factory _$CityEntity([void Function(CityEntityBuilder)? updates]) =>
+      (new CityEntityBuilder()..update(updates))._build();
 
-  _$CityModel._({this.name, this.lat, this.lon, this.country, this.state})
+  _$CityEntity._(
+      {this.id, this.name, this.lat, this.lon, this.country, this.state})
       : super._();
 
   @override
-  CityModel rebuild(void Function(CityModelBuilder) updates) =>
+  CityEntity rebuild(void Function(CityEntityBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CityModelBuilder toBuilder() => new CityModelBuilder()..replace(this);
+  CityEntityBuilder toBuilder() => new CityEntityBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is CityModel &&
+    return other is CityEntity &&
+        id == other.id &&
         name == other.name &&
         lat == other.lat &&
         lon == other.lon &&
@@ -134,6 +148,7 @@ class _$CityModel extends CityModel {
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, lat.hashCode);
     _$hash = $jc(_$hash, lon.hashCode);
@@ -145,7 +160,8 @@ class _$CityModel extends CityModel {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'CityModel')
+    return (newBuiltValueToStringHelper(r'CityEntity')
+          ..add('id', id)
           ..add('name', name)
           ..add('lat', lat)
           ..add('lon', lon)
@@ -155,8 +171,12 @@ class _$CityModel extends CityModel {
   }
 }
 
-class CityModelBuilder implements Builder<CityModel, CityModelBuilder> {
-  _$CityModel? _$v;
+class CityEntityBuilder implements Builder<CityEntity, CityEntityBuilder> {
+  _$CityEntity? _$v;
+
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
   String? _name;
   String? get name => _$this._name;
@@ -178,11 +198,12 @@ class CityModelBuilder implements Builder<CityModel, CityModelBuilder> {
   String? get state => _$this._state;
   set state(String? state) => _$this._state = state;
 
-  CityModelBuilder();
+  CityEntityBuilder();
 
-  CityModelBuilder get _$this {
+  CityEntityBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _id = $v.id;
       _name = $v.name;
       _lat = $v.lat;
       _lon = $v.lon;
@@ -194,23 +215,28 @@ class CityModelBuilder implements Builder<CityModel, CityModelBuilder> {
   }
 
   @override
-  void replace(CityModel other) {
+  void replace(CityEntity other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$CityModel;
+    _$v = other as _$CityEntity;
   }
 
   @override
-  void update(void Function(CityModelBuilder)? updates) {
+  void update(void Function(CityEntityBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  CityModel build() => _build();
+  CityEntity build() => _build();
 
-  _$CityModel _build() {
+  _$CityEntity _build() {
     final _$result = _$v ??
-        new _$CityModel._(
-            name: name, lat: lat, lon: lon, country: country, state: state);
+        new _$CityEntity._(
+            id: id,
+            name: name,
+            lat: lat,
+            lon: lon,
+            country: country,
+            state: state);
     replace(_$result);
     return _$result;
   }

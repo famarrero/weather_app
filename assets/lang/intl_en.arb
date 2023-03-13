@@ -19,12 +19,17 @@
     "serviceUnavailable": "Service unavailable",
     "gatewayTimeOut": "Gateway time out",
     "unknownConnectionErrorFromApi": "Unknown server error",
-    "fromApi": "Desde el servidor",
+    "fromApi": "From server",
     "nullResponseForServer": "Null response from server",
     "invalidToken": "Invalid token",
     "nothingFound": "Nothing found",
     "unauthorized": "Unauthorized",
     "searchCity": "Search city",
     "search": "Search",
-    "fieldRequired": "Field required"
+    "fieldRequired": "Field required",
+    "noResultsFound": "No results found",
+    "name": "Name",
+    "state": "State",
+    "countryCode": "Country code",
+    "myCities": "My cities"
 }

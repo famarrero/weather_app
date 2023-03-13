@@ -1,11 +1,14 @@
+import 'package:drift_db_viewer/drift_db_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:weather_app/src/core/services_manager/package_info_service.dart';
+import 'package:weather_app/src/data/data_sources/local/database/drift_database.dart';
 import 'package:weather_app/src/injector.dart';
 import 'package:weather_app/src/presentation/app/assets/assets.gen.dart';
 import 'package:weather_app/src/presentation/app/lang/l10n.dart';
 import 'package:weather_app/src/presentation/app/theme/colors.dart';
 import 'package:weather_app/src/presentation/app/theme/text_styles.dart';
+import 'package:weather_app/src/presentation/components/development_options/development_options_bottom_modal_sheet.dart';
 import 'package:weather_app/src/presentation/components/settings_widget.dart';
 import 'package:weather_app/src/presentation/components/side_bar/sidebar_menu_item.dart';
 
@@ -41,7 +44,7 @@ class SideBar extends StatelessWidget {
           ),
           const SizedBox(
             height: 24,
-          ),       
+          ),
           SideBarMenuItem(
             text: localizations.settings,
             icon: Iconsax.settings,
@@ -57,7 +60,23 @@ class SideBar extends StatelessWidget {
                 },
               );
             },
-          ),          
+          ),
+          SideBarMenuItem(
+            text: localizations.developmentOptions,
+            icon: Iconsax.mobile,
+            onPressed: () {
+              Navigator.of(context).pop();
+              showModalBottomSheet<dynamic>(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                context: context,
+                isScrollControlled: true,
+                builder: (context) {
+                  return const DevelopmentOptionsBottomModalSheet();
+                },
+              );
+            },
+          ),       
         ],
       ),
     );

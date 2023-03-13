@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Esto es un texto para cambiar el tamaño de la fuente"),
         "checkYourInternetConnection": MessageLookupByLibrary.simpleMessage(
             "Check your internet connection"),
+        "countryCode": MessageLookupByLibrary.simpleMessage("Código de país"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Tema ocuro"),
         "developmentOptions":
             MessageLookupByLibrary.simpleMessage("Opciones de desarrollo"),
@@ -44,7 +45,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "internalServerError":
             MessageLookupByLibrary.simpleMessage("Error interno del servidor"),
         "invalidToken": MessageLookupByLibrary.simpleMessage("Token invalido"),
+        "myCities": MessageLookupByLibrary.simpleMessage("Mis ciudades"),
+        "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "noData": MessageLookupByLibrary.simpleMessage("No hay datos"),
+        "noResultsFound": MessageLookupByLibrary.simpleMessage(
+            "No se encontraron resultados"),
         "nothingFound": MessageLookupByLibrary.simpleMessage(
             "No se encontraron resultados"),
         "nullResponseForServer": MessageLookupByLibrary.simpleMessage(
@@ -58,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "serviceUnavailable":
             MessageLookupByLibrary.simpleMessage("Servicio no disponible"),
         "settings": MessageLookupByLibrary.simpleMessage("Ajustes"),
+        "state": MessageLookupByLibrary.simpleMessage("Estado"),
         "tapToRetry":
             MessageLookupByLibrary.simpleMessage("Toca para reintentar"),
         "unauthorized": MessageLookupByLibrary.simpleMessage("No autorizado"),

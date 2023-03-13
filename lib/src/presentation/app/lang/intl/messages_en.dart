@@ -29,19 +29,24 @@ class MessageLookup extends MessageLookupByLibrary {
             "This is a text for change the font size"),
         "checkYourInternetConnection": MessageLookupByLibrary.simpleMessage(
             "Check your internet connection"),
+        "countryCode": MessageLookupByLibrary.simpleMessage("Country code"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
         "developmentOptions":
             MessageLookupByLibrary.simpleMessage("Development options"),
         "errorOcurred": MessageLookupByLibrary.simpleMessage("Error ocurred"),
         "fieldRequired": MessageLookupByLibrary.simpleMessage("Field required"),
         "fontSize": MessageLookupByLibrary.simpleMessage("Font size"),
-        "fromApi": MessageLookupByLibrary.simpleMessage("Desde el servidor"),
+        "fromApi": MessageLookupByLibrary.simpleMessage("From server"),
         "gatewayTimeOut":
             MessageLookupByLibrary.simpleMessage("Gateway time out"),
         "internalServerError":
             MessageLookupByLibrary.simpleMessage("Internal server error"),
         "invalidToken": MessageLookupByLibrary.simpleMessage("Invalid token"),
+        "myCities": MessageLookupByLibrary.simpleMessage("My cities"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "noData": MessageLookupByLibrary.simpleMessage("No data"),
+        "noResultsFound":
+            MessageLookupByLibrary.simpleMessage("No results found"),
         "nothingFound": MessageLookupByLibrary.simpleMessage("Nothing found"),
         "nullResponseForServer":
             MessageLookupByLibrary.simpleMessage("Null response from server"),
@@ -54,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "serviceUnavailable":
             MessageLookupByLibrary.simpleMessage("Service unavailable"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "state": MessageLookupByLibrary.simpleMessage("State"),
         "tapToRetry": MessageLookupByLibrary.simpleMessage("Tap to retry"),
         "unauthorized": MessageLookupByLibrary.simpleMessage("Unauthorized"),
         "unknownConnectionErrorFromApi":

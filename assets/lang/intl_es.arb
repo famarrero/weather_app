@@ -26,5 +26,11 @@
     "unauthorized": "No autorizado",
     "searchCity": "Buscar ciudad",
     "search": "Buscar",
-    "fieldRequired": "Campo requerido"
+    "fieldRequired": "Campo requerido",
+    "noResultsFound": "No se encontraron resultados",
+    "name": "Nombre",
+    "state": "Estado",
+    "countryCode": "Código de país",
+    "myCities": "Mis ciudades"
+
 }

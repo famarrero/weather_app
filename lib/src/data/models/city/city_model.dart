@@ -15,10 +15,10 @@ abstract class CityModel implements Built<CityModel, CityModelBuilder> {
   String? get name;
 
   @BuiltValueField(wireName: 'lat')
-  String? get lat;
+  double? get lat;
 
   @BuiltValueField(wireName: 'lon')
-  String? get lon;
+  double? get lon;
 
   @BuiltValueField(wireName: 'country')
   String? get country;

@@ -1,11 +1,11 @@
-import 'package:weather_app/src/data/data_sources/local/database/drift_database.dart';
+import 'package:weather_app/src/domain/entities/city/city_entity.dart';
 
 abstract class CityDatabaseRepository {
-  Future<int> insertCity(CitiesTableEntity city);
+  Future<int> insertCity(CityEntity city);
 
-  Stream<List<CitiesTableEntity>> watchCities();
+  Stream<List<CityEntity>> watchCities();
 
-  Future<List<CitiesTableEntity>> getCities();
+  Future<List<CityEntity>> getCities();
 
   Future deleteCityById(int id);
 

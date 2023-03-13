@@ -1,9 +1,12 @@
 import 'package:dio_logs_manager/dio_logs_manager.dart';
+import 'package:drift_db_viewer/drift_db_viewer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:weather_app/src/core/services_manager/package_info_service.dart';
 import 'package:weather_app/src/core/utils/env_config.dart';
+import 'package:weather_app/src/data/data_sources/local/database/drift_database.dart';
 import 'package:weather_app/src/injector.dart';
 import 'package:weather_app/src/presentation/app/lang/l10n.dart';
 import 'package:weather_app/src/presentation/app/theme/text_styles.dart';
@@ -76,6 +79,22 @@ class _DevelopmentOptionsBottomModalSheetState
             } else {
               dismissDebugBtn();
             }
+          },
+        ),
+        const SizedBox(
+          height: 12,
+        ),
+
+        //Database inspector
+        SettingTitle(
+          title: 'Database inspector',
+          icon: Iconsax.data,
+          onPressed: () {
+            Navigator.of(context).push<dynamic>(
+              MaterialPageRoute<dynamic>(
+                builder: (context) => DriftDbViewer(injector<AppDatabase>()),
+              ),
+            );
           },
         ),
         const SizedBox(

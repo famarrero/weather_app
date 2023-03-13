@@ -3,27 +3,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:weather_app/src/core/exports/lang.dart';
 import 'package:weather_app/src/core/services_manager/url_launcher_service.dart';
-import 'package:weather_app/src/data/models/city/city_model.dart';
+import 'package:weather_app/src/domain/entities/city/city_entity.dart';
 import 'package:weather_app/src/injector.dart';
 import 'package:weather_app/src/presentation/app/theme/dimensions.dart';
 import 'package:weather_app/src/presentation/app/theme/text_styles.dart';
 import 'package:weather_app/src/presentation/components/custom_card.dart';
-import 'package:weather_app/src/presentation/pages/search_city_page/cubit/search_city_cubit.dart';
+import 'package:weather_app/src/presentation/pages/cities_manage_page/cubit/cities_manage_cubit.dart';
 
-class CityTile extends StatelessWidget {
-  const CityTile({
+class CityManageTile extends StatelessWidget {
+  const CityManageTile({
     Key? key,
     required this.city,
   }) : super(key: key);
 
-  final CityModel city;
+  final CityEntity city;
 
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      onTap: () {
-        context.read<SearchCityCubit>().insertCityInDB(city);
-      },
+      onTap: () {},
       margin: const EdgeInsets.symmetric(vertical: 4.0),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -71,6 +69,19 @@ class CityTile extends StatelessWidget {
                 },
                 icon: const Icon(Iconsax.map),
               ),
+            const SizedBox(
+              width: 4.0,
+            ),
+            IconButton(
+              splashRadius: 20,
+              onPressed: () {
+                context.read<CitiesManageCubit>().deleteCityInDB(city);
+              },
+              icon: const Icon(
+                Iconsax.trash,
+                color: Colors.red,
+              ),
+            ),
           ],
         ),
       ),

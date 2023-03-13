@@ -3,6 +3,7 @@ import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
 import 'package:weather_app/src/data/models/city/city_model.dart';
 import 'package:weather_app/src/data/models/weather_data/weather_data_model.dart';
+import 'package:weather_app/src/domain/entities/city/city_entity.dart';
 
 part 'serializers.g.dart';
 
@@ -14,6 +15,7 @@ part 'serializers.g.dart';
   MainModel,
   WindModel,
   SysModel,
+  CityEntity,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addPlugin(StandardJsonPlugin())

@@ -7,6 +7,7 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(CityEntity.serializer)
       ..add(CityModel.serializer)
       ..add(CloudsModel.serializer)
       ..add(CoordModel.serializer)

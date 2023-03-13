@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:weather_app/src/core/utils/react_to_failure_snackbar.dart';
 import 'package:weather_app/src/injector.dart';
 import 'package:weather_app/src/presentation/app/lang/l10n.dart';
 import 'package:weather_app/src/presentation/app/theme/dimensions.dart';
 import 'package:weather_app/src/presentation/components/custom_back_button.dart';
+import 'package:weather_app/src/presentation/components/empty_view_info_widget.dart';
 import 'package:weather_app/src/presentation/components/failure_widget.dart';
 import 'package:weather_app/src/presentation/components/form/normal_form/custom_text_field.dart';
 import 'package:weather_app/src/presentation/components/loading.dart';
@@ -40,6 +42,7 @@ class _SearchCityPageState extends State<SearchCityPage> {
         _searchCityErrorText = S.of(context).fieldRequired;
       });
     } else {
+      FocusScope.of(context).unfocus();
       context
           .read<SearchCityCubit>()
           .getFoundCities(_searchCityController.text);
@@ -53,7 +56,10 @@ class _SearchCityPageState extends State<SearchCityPage> {
         leading: const CustomBackButton(),
       ),
       body: BlocProvider(
-        create: (context) => SearchCityCubit(injector()),
+        create: (context) => SearchCityCubit(
+          injector(),
+          injector(),
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kPagePadding),
           child: Column(
@@ -90,32 +96,49 @@ class _SearchCityPageState extends State<SearchCityPage> {
                   )
                 ],
               ),
-              BlocConsumer<SearchCityCubit, SearchCityState>(
-                listener: (context, state) {},
-                builder: (context, state) {
-                  if (state.foundCities.isLoading) {
-                    return const CustomCircularLoadingIndicator();
-                  } else if (state.foundCities.failure != null) {
-                    return FailureWidget(
-                      iconData: Iconsax.warning_2,
-                      title: S.of(context).errorOcurred,
-                      failure: state.foundCities.failure,
-                      retry: () => _getFoundCities(context),
-                    );
-                  } else if (state.foundCities.hasSuccessData) {
-                    return ListView.builder(
-                      itemCount: state.foundCities.listData.length,
-                      itemBuilder: (context, index) {
-                        final city = state.foundCities.listData[index];
-                        return CityTile(
-                          city: city,
-                        );
-                      },
-                    );
-                  } else {
-                    return const SizedBox();
-                  }
-                },
+              const SizedBox(height: 24.0),
+              Expanded(
+                child: BlocConsumer<SearchCityCubit, SearchCityState>(
+                  listener: (context, state) {
+                    if (state.insertCityInDB.failure != null) {
+                      context.reactToFailureWithSnackBar(
+                        failure: state.insertCityInDB.failure,
+                      );
+                    }
+                    if (state.insertCityInDB.data == true) {
+                      Navigator.of(context).pop();
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state.foundCities.isLoading) {
+                      return const SizedBox(
+                        height: 200.0,
+                        child: CustomCircularLoadingIndicator(),
+                      );
+                    } else if (state.foundCities.failure != null) {
+                      return FailureWidget(
+                        iconData: Iconsax.warning_2,
+                        title: S.of(context).errorOcurred,
+                        failure: state.foundCities.failure,
+                        retry: () => _getFoundCities(context),
+                      );
+                    } else if (state.foundCities.hasSuccessData) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: state.foundCities.listData.length,
+                        itemBuilder: (context, index) {
+                          final city = state.foundCities.listData[index];
+                          return CityTile(
+                            city: city,
+                          );
+                        },
+                      );
+                    } else {
+                      return const SizedBox();
+                    }
+                  },
+                ),
               ),
             ],
           ),

@@ -1,5 +1,8 @@
+import 'package:drift/drift.dart';
+import 'package:flutter/material.dart';
 import 'package:weather_app/src/data/data_sources/local/database/daos/city/city_dao.dart';
 import 'package:weather_app/src/data/data_sources/local/database/drift_database.dart';
+import 'package:weather_app/src/domain/entities/city/city_entity.dart';
 import 'package:weather_app/src/domain/repositories/city_database_repository.dart';
 
 class CityDatabaseRepositoryImpl implements CityDatabaseRepository {
@@ -8,18 +11,40 @@ class CityDatabaseRepositoryImpl implements CityDatabaseRepository {
   final CityDao _cityDao;
 
   @override
-  Future<int> insertCity(CitiesTableEntity city) {
-    return _cityDao.insertCity(city);
+  Future<int> insertCity(CityEntity city) {
+    final CitiesCompanion citiesCompanion = CitiesCompanion(
+      name: Value(city.name),
+      state: Value(city.state),
+      country: Value(city.country),
+      lat: Value(city.lat),
+      lon: Value(city.lon),
+    );
+
+    return _cityDao.insertCity(citiesCompanion);
   }
 
   @override
-  Stream<List<CitiesTableEntity>> watchCities() {
-    return _cityDao.watchCities();
+  Stream<List<CityEntity>> watchCities() {
+    final watchCitiesStream = _cityDao.watchCities();
+
+    final Stream<List<CityEntity>> mappedStream =
+        watchCitiesStream.map<List<CityEntity>>(
+      (event) => event
+          .map<CityEntity>((p0) => _mapDBEntityIntoCityEntity(p0))
+          .toList(),
+    );
+
+    return mappedStream;
   }
 
   @override
-  Future<List<CitiesTableEntity>> getCities() {
-    return _cityDao.getCities();
+  Future<List<CityEntity>> getCities() async {
+    final getCitiesFuture = await _cityDao.getCities();
+
+    final List<CityEntity> mappedFuture =
+        getCitiesFuture.map((p0) => _mapDBEntityIntoCityEntity(p0)).toList();
+
+    return mappedFuture;
   }
 
   @override
@@ -30,5 +55,17 @@ class CityDatabaseRepositoryImpl implements CityDatabaseRepository {
   @override
   Future deleteAllCities() {
     return _cityDao.deleteAllCities();
+  }
+
+  CityEntity _mapDBEntityIntoCityEntity(CitiesTableEntity dbEntity) {
+    return CityEntity(
+      (b) => b
+        ..id = dbEntity.id
+        ..name = dbEntity.name
+        ..state = dbEntity.state
+        ..country = dbEntity.country
+        ..lat = dbEntity.lat
+        ..lon = dbEntity.lon,
+    );
   }
 }

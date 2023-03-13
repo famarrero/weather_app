@@ -25,14 +25,14 @@ class $CitiesTable extends Cities
       type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _latMeta = const VerificationMeta('lat');
   @override
-  late final GeneratedColumn<String> lat = GeneratedColumn<String>(
+  late final GeneratedColumn<double> lat = GeneratedColumn<double>(
       'lat', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   static const VerificationMeta _lonMeta = const VerificationMeta('lon');
   @override
-  late final GeneratedColumn<String> lon = GeneratedColumn<String>(
+  late final GeneratedColumn<double> lon = GeneratedColumn<double>(
       'lon', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   static const VerificationMeta _countryMeta =
       const VerificationMeta('country');
   @override
@@ -92,9 +92,9 @@ class $CitiesTable extends Cities
       name: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}name']),
       lat: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}lat']),
+          .read(DriftSqlType.double, data['${effectivePrefix}lat']),
       lon: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}lon']),
+          .read(DriftSqlType.double, data['${effectivePrefix}lon']),
       country: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}country']),
       state: attachedDatabase.typeMapping
@@ -112,8 +112,8 @@ class CitiesTableEntity extends DataClass
     implements Insertable<CitiesTableEntity> {
   final int id;
   final String? name;
-  final String? lat;
-  final String? lon;
+  final double? lat;
+  final double? lon;
   final String? country;
   final String? state;
   const CitiesTableEntity(
@@ -131,10 +131,10 @@ class CitiesTableEntity extends DataClass
       map['name'] = Variable<String>(name);
     }
     if (!nullToAbsent || lat != null) {
-      map['lat'] = Variable<String>(lat);
+      map['lat'] = Variable<double>(lat);
     }
     if (!nullToAbsent || lon != null) {
-      map['lon'] = Variable<String>(lon);
+      map['lon'] = Variable<double>(lon);
     }
     if (!nullToAbsent || country != null) {
       map['country'] = Variable<String>(country);
@@ -165,8 +165,8 @@ class CitiesTableEntity extends DataClass
     return CitiesTableEntity(
       id: serializer.fromJson<int>(json['id']),
       name: serializer.fromJson<String?>(json['name']),
-      lat: serializer.fromJson<String?>(json['lat']),
-      lon: serializer.fromJson<String?>(json['lon']),
+      lat: serializer.fromJson<double?>(json['lat']),
+      lon: serializer.fromJson<double?>(json['lon']),
       country: serializer.fromJson<String?>(json['country']),
       state: serializer.fromJson<String?>(json['state']),
     );
@@ -177,8 +177,8 @@ class CitiesTableEntity extends DataClass
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'name': serializer.toJson<String?>(name),
-      'lat': serializer.toJson<String?>(lat),
-      'lon': serializer.toJson<String?>(lon),
+      'lat': serializer.toJson<double?>(lat),
+      'lon': serializer.toJson<double?>(lon),
       'country': serializer.toJson<String?>(country),
       'state': serializer.toJson<String?>(state),
     };
@@ -187,8 +187,8 @@ class CitiesTableEntity extends DataClass
   CitiesTableEntity copyWith(
           {int? id,
           Value<String?> name = const Value.absent(),
-          Value<String?> lat = const Value.absent(),
-          Value<String?> lon = const Value.absent(),
+          Value<double?> lat = const Value.absent(),
+          Value<double?> lon = const Value.absent(),
           Value<String?> country = const Value.absent(),
           Value<String?> state = const Value.absent()}) =>
       CitiesTableEntity(
@@ -229,8 +229,8 @@ class CitiesTableEntity extends DataClass
 class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
   final Value<int> id;
   final Value<String?> name;
-  final Value<String?> lat;
-  final Value<String?> lon;
+  final Value<double?> lat;
+  final Value<double?> lon;
   final Value<String?> country;
   final Value<String?> state;
   const CitiesCompanion({
@@ -252,8 +252,8 @@ class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
   static Insertable<CitiesTableEntity> custom({
     Expression<int>? id,
     Expression<String>? name,
-    Expression<String>? lat,
-    Expression<String>? lon,
+    Expression<double>? lat,
+    Expression<double>? lon,
     Expression<String>? country,
     Expression<String>? state,
   }) {
@@ -270,8 +270,8 @@ class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
   CitiesCompanion copyWith(
       {Value<int>? id,
       Value<String?>? name,
-      Value<String?>? lat,
-      Value<String?>? lon,
+      Value<double?>? lat,
+      Value<double?>? lon,
       Value<String?>? country,
       Value<String?>? state}) {
     return CitiesCompanion(
@@ -294,10 +294,10 @@ class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
       map['name'] = Variable<String>(name.value);
     }
     if (lat.present) {
-      map['lat'] = Variable<String>(lat.value);
+      map['lat'] = Variable<double>(lat.value);
     }
     if (lon.present) {
-      map['lon'] = Variable<String>(lon.value);
+      map['lon'] = Variable<double>(lon.value);
     }
     if (country.present) {
       map['country'] = Variable<String>(country.value);

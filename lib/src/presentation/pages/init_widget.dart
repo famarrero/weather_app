@@ -28,8 +28,6 @@ class _InitWidgetState extends State<InitWidget> {
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
       context.read<AppCubit>().changeInternetConnectionStatus(result);
-
-      injector<LoggerService>().printInfoLog(result.name);
     });
   }
 
