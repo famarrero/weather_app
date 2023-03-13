@@ -78,11 +78,15 @@ class _SearchCityPageState extends State<SearchCityPage> {
                   const SizedBox(
                     width: 8.0,
                   ),
-                  Expanded(
-                    child: TextButton(
-                      onPressed: () => _getFoundCities(context),
-                      child: Text(S.of(context).search),
-                    ),
+                  Builder(
+                    builder: (context) {
+                      return Expanded(
+                        child: TextButton(
+                          onPressed: () => _getFoundCities(context),
+                          child: Text(S.of(context).search),
+                        ),
+                      );
+                    },
                   )
                 ],
               ),
