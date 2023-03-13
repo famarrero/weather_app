@@ -25,5 +25,6 @@
     "nothingFound": "No se encontraron resultados",
     "unauthorized": "No autorizado",
     "searchCity": "Buscar ciudad",
-    "search": "Buscar"
+    "search": "Buscar",
+    "fieldRequired": "Campo requerido"
 }

@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "developmentOptions":
             MessageLookupByLibrary.simpleMessage("Development options"),
         "errorOcurred": MessageLookupByLibrary.simpleMessage("Error ocurred"),
+        "fieldRequired": MessageLookupByLibrary.simpleMessage("Field required"),
         "fontSize": MessageLookupByLibrary.simpleMessage("Font size"),
         "fromApi": MessageLookupByLibrary.simpleMessage("Desde el servidor"),
         "gatewayTimeOut":

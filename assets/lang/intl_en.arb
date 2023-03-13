@@ -25,5 +25,6 @@
     "nothingFound": "Nothing found",
     "unauthorized": "Unauthorized",
     "searchCity": "Search city",
-    "search": "Search"
+    "search": "Search",
+    "fieldRequired": "Field required"
 }
