@@ -283,8 +283,10 @@ class UrlLauncherServiceImpl extends UrlLauncherService {
     Uri uri;
 
     if (kIsWeb) {
-      uri = Uri.https('www.google.com', '/maps/search/',
-          <String, dynamic>{'api': '1', 'query': '$latitude,$longitude'});
+      uri = Uri.https('www.google.com', '/maps/search/', <String, dynamic>{
+        'api': '1',
+        'query': '$latitude,$longitude',
+      });
     } else if (Platform.isAndroid) {
       var query = '$latitude,$longitude';
 
