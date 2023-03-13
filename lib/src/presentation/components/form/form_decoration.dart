@@ -15,7 +15,7 @@ InputDecoration formDecoration({
   IconData? suffixIcon,
   Widget? suffixWidget,
 }) =>
-    InputDecoration(
+    InputDecoration(      
       isDense: isDense,
       contentPadding: contentPadding ?? const EdgeInsets.all(8),
       border: border ??

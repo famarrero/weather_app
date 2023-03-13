@@ -69,7 +69,7 @@ class _CustomTextFieldState<T> extends State<CustomTextField<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextField(      
       controller: controller,
       onChanged: widget.onChanged,
       onSubmitted: widget.onSubmitted,

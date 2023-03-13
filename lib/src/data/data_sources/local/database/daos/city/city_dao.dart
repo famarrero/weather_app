@@ -8,28 +8,26 @@ part 'city_dao.g.dart';
 // Denote which tables this DAO can access
 @DriftAccessor(tables: [Cities])
 class CityDao extends DatabaseAccessor<AppDatabase> with _$CityDaoMixin {
-  final AppDatabase db;
-
   CityDao(this.db) : super(db);
 
-  Stream<List<CitiesTableEntity>> watchSelectedQuickAccess() {
-    return select(cities)
-        .watch()
-        .map((rows) => rows.map((row) => row.id).toList());
-  }
+  final AppDatabase db;
 
-  Future<List<CitiesTableEntity>> getSelectedQuickAccess() {
-    return select(cities).map((p0) => p0.id).get();
-  }
-
-  Future<int> insertQuickAccess(
-    Insertable<CitiesTableEntity> quickAccessTableEntity,
+  Future<int> insertCity(
+    Insertable<CitiesTableEntity> city,
   ) =>
       into(cities)
-          .insert(quickAccessTableEntity, mode: InsertMode.insertOrReplace);
+          .insert(city, mode: InsertMode.insertOrReplace);
 
-  Future deleteQuickAccess(int id) =>
+  Stream<List<CitiesTableEntity>> watchCities() {
+    return select(cities).watch();
+  }
+
+  Future<List<CitiesTableEntity>> getCities() {
+    return select(cities).get();
+  }
+
+  Future deleteCityById(int id) =>
       (delete(cities)..where((tbl) => tbl.id.equals(id))).go();
 
-  Future deleteAllQuickAccess() => (delete(cities)).go();
+  Future deleteAllCities() => (delete(cities)).go();
 }

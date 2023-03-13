@@ -11,11 +11,9 @@ import 'package:weather_app/src/domain/repositories/remote_repository.dart';
 class RemoteRepositoryImpl implements RemoteRepository {
   const RemoteRepositoryImpl(
     this._remoteDataSource,
-    this._dioHttpClient,
   );
 
   final RemoteDataSource _remoteDataSource;
-  final DioHttpClient _dioHttpClient;
 
   @override
   Future<Either<Failure, BuiltList<CityModel>>> searchCity({

@@ -11,12 +11,15 @@ import 'package:weather_app/src/core/services_manager/logger_service.dart';
 import 'package:weather_app/src/core/services_manager/package_info_service.dart';
 import 'package:weather_app/src/core/services_manager/url_launcher_service.dart';
 import 'package:weather_app/src/core/utils/env_config.dart';
+import 'package:weather_app/src/data/data_sources/local/database/daos/city/city_dao.dart';
+import 'package:weather_app/src/data/data_sources/local/database/drift_database.dart';
 import 'package:weather_app/src/data/data_sources/remote/remote_datasource.dart';
 import 'package:weather_app/src/data/repositories/app_repository_impl.dart';
+import 'package:weather_app/src/data/repositories/city_database_repository_impl.dart';
 import 'package:weather_app/src/data/repositories/remote_repository_impl.dart';
 import 'package:weather_app/src/domain/repositories/app_repository.dart';
+import 'package:weather_app/src/domain/repositories/city_database_repository.dart';
 import 'package:weather_app/src/domain/repositories/remote_repository.dart';
-
 
 final injector = GetIt.instance;
 
@@ -35,6 +38,14 @@ Future<void> initializeDependencies(String environment) async {
   );
   //
 
+  // Database
+  injector.registerLazySingleton<AppDatabase>(
+    () => AppDatabase(),
+  );
+  injector.registerLazySingleton<CityDao>(
+    () => CityDao(injector()),
+  );
+
   // SharedPreferences
   final SharedPreferences preferences = await SharedPreferences.getInstance();
   injector.registerLazySingleton(() => preferences);
@@ -50,7 +61,7 @@ Future<void> initializeDependencies(String environment) async {
   injector.registerSingleton<DioHttpClient>(
     DioHttpClientImpl(
       injector(),
-      injector(),  
+      injector(),
     ),
   );
   //
@@ -61,11 +72,13 @@ Future<void> initializeDependencies(String environment) async {
   );
 
   // Repositories
-
   injector.registerLazySingleton<RemoteRepository>(
-    () => RemoteRepositoryImpl(injector(), injector()),
+    () => RemoteRepositoryImpl(injector()),
   );
 
+  injector.registerLazySingleton<CityDatabaseRepository>(
+    () => CityDatabaseRepositoryImpl(injector()),
+  );
   //
 
   //Services manager
@@ -82,16 +95,6 @@ Future<void> initializeDependencies(String environment) async {
   injector.registerLazySingleton<LoggerService>(() => LoggerServiceImpl());
   //
 
-  // UseCases
-  // injector.registerLazySingleton<InsertNewNormsIntoDBUseCase>(
-  //   () => InsertNewNormsIntoDBUseCase(injector(), injector()),
-  // );
-
-  // Blocs/Cubits
-  //**
-  // They are register like registerFactory because every time i need a new instance of the BloC/Cubit
-  //**
-  // injector.registerFactory<AppCubit>(() => AppCubit(injector()));
 }
 
 Future<void> registerStorageDirectory() async {

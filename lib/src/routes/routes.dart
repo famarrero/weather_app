@@ -6,15 +6,10 @@ import 'package:weather_app/src/presentation/pages/search_city_page/search_city_
 
 @MaterialAutoRouter(
   routes: <AutoRoute>[
-    AutoRoute<dynamic>(
-      page: MainPage,
-      initial: true,
-      children: [
-        AutoRoute<dynamic>(page: CitiesManagePage),
-        AutoRoute<dynamic>(page: FiveDayForecastPage),
-        AutoRoute<dynamic>(page: SearchCityPage),
-      ],
-    ),
+    AutoRoute<dynamic>(page: MainPage, initial: true),
+    AutoRoute<dynamic>(page: CitiesManagePage),
+    AutoRoute<dynamic>(page: FiveDayForecastPage),
+    AutoRoute<dynamic>(page: SearchCityPage),
   ],
 )
 class $AppRouter {}

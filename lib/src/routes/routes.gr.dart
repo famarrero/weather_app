@@ -58,35 +58,29 @@ class AppRouter extends _i5.RootStackRouter {
         _i5.RouteConfig(
           MainPageRoute.name,
           path: '/',
-          children: [
-            _i5.RouteConfig(
-              CitiesManagePageRoute.name,
-              path: 'cities-manage-page',
-              parent: MainPageRoute.name,
-            ),
-            _i5.RouteConfig(
-              FiveDayForecastPageRoute.name,
-              path: 'five-day-forecast-page',
-              parent: MainPageRoute.name,
-            ),
-            _i5.RouteConfig(
-              SearchCityPageRoute.name,
-              path: 'search-city-page',
-              parent: MainPageRoute.name,
-            ),
-          ],
-        )
+        ),
+        _i5.RouteConfig(
+          CitiesManagePageRoute.name,
+          path: '/cities-manage-page',
+        ),
+        _i5.RouteConfig(
+          FiveDayForecastPageRoute.name,
+          path: '/five-day-forecast-page',
+        ),
+        _i5.RouteConfig(
+          SearchCityPageRoute.name,
+          path: '/search-city-page',
+        ),
       ];
 }
 
 /// generated route for
 /// [_i1.MainPage]
 class MainPageRoute extends _i5.PageRouteInfo<void> {
-  const MainPageRoute({List<_i5.PageRouteInfo>? children})
+  const MainPageRoute()
       : super(
           MainPageRoute.name,
           path: '/',
-          initialChildren: children,
         );
 
   static const String name = 'MainPageRoute';
@@ -98,7 +92,7 @@ class CitiesManagePageRoute extends _i5.PageRouteInfo<void> {
   const CitiesManagePageRoute()
       : super(
           CitiesManagePageRoute.name,
-          path: 'cities-manage-page',
+          path: '/cities-manage-page',
         );
 
   static const String name = 'CitiesManagePageRoute';
@@ -110,7 +104,7 @@ class FiveDayForecastPageRoute extends _i5.PageRouteInfo<void> {
   const FiveDayForecastPageRoute()
       : super(
           FiveDayForecastPageRoute.name,
-          path: 'five-day-forecast-page',
+          path: '/five-day-forecast-page',
         );
 
   static const String name = 'FiveDayForecastPageRoute';
@@ -122,7 +116,7 @@ class SearchCityPageRoute extends _i5.PageRouteInfo<void> {
   const SearchCityPageRoute()
       : super(
           SearchCityPageRoute.name,
-          path: 'search-city-page',
+          path: '/search-city-page',
         );
 
   static const String name = 'SearchCityPageRoute';

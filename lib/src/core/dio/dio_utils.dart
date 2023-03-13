@@ -29,107 +29,7 @@ Future<Either<Failure, T>> safeRequest<T>(
       if (e.response!.statusCode == 401) {
         return left(
           UnauthorizedFailure(
-            message: S.current.invalidUserOrPassword,
-            errorType: e.type,
-            statusCode: e.response?.statusCode,
-          ),
-        );
-      } else if (e.response!.statusCode == 403) {
-        return left(
-          ForbiddenFailure(
-            message: S.current.invalidToken,
-            errorType: e.type,
-            statusCode: e.response?.statusCode,
-          ),
-        );
-      } else if (e.response!.statusCode == 404) {
-        var message = S.current.nothingFound;
-        // ignore: avoid_dynamic_calls
-        if (e.response!.data['message'] != null) {
-          // ignore: avoid_dynamic_calls
-          message = e.response!.data['message'] as String;
-        }
-        return left(
-          NotFoundFailure(
-            message: message,
-            errorType: e.type,
-            statusCode: e.response?.statusCode,
-          ),
-        );
-      } else if (e.response!.statusCode == 500) {
-        return left(
-          InternalServerFailure(
-            message: S.current.internalServerError,
-            errorType: e.type,
-            statusCode: e.response?.statusCode,
-          ),
-        );
-      } else if (e.response!.statusCode == 502) {
-        return left(
-          BadGatewayFailure(
-            message: S.current.badGateway,
-            errorType: e.type,
-            statusCode: e.response?.statusCode,
-          ),
-        );
-      } else if (e.response!.statusCode == 503) {
-        return left(
-          ServiceUnavailableFailure(
-            message: S.current.serviceUnavailable,
-            errorType: e.type,
-            statusCode: e.response?.statusCode,
-          ),
-        );
-      } else if (e.response!.statusCode == 504) {
-        return left(
-          GatewayTimeOutFailure(
-            message: S.current.gatewayTimeOut,
-            errorType: e.type,
-            statusCode: e.response?.statusCode,
-          ),
-        );
-      } else {
-        return left(
-          DioServerFailure(
-            message:
-                'Error ${e.response?.statusCode} ${S.current.fromApi.toLowerCase()}: ${e.response!.data}',
-            errorType: e.type,
-            statusCode: e.response?.statusCode,
-          ),
-        );
-      }
-    } else {
-      // Something happened in setting up or sending the request that triggered an Error
-      return left(
-        DioRequestFailure(
-          message: '${S.current.unknownConnectionErrorFromApi}: ${e.message}',
-          errorType: e.type,
-        ),
-      );
-    }
-  } catch (e) {
-    injector<LoggerService>().printErrorLog(e.toString());
-    return left(
-      UnknownFailure(message: '${S.current.unknownFailureOnApiCall}: $e'),
-    );
-  }
-}
-
-Future<Either<Failure, T?>> safeRequestWhitNull<T>(
-  FutureOr<T?> Function() computation,
-) async {
-  try {
-    final response = await computation();
-
-    return right(response);
-  } on DioError catch (e) {
-    // The request was made and the server responded with a status code
-    // that falls out of the range of 2xx and is also not 304.
-    if (e.response != null) {
-      if (e.response!.statusCode == 401) {
-        return left(
-          UnauthorizedFailure(
-            message: S.current.invalidUserOrPassword,
+            message: S.current.unauthorized,
             errorType: e.type,
             statusCode: e.response?.statusCode,
           ),
@@ -196,7 +96,7 @@ Future<Either<Failure, T?>> safeRequestWhitNull<T>(
       // Something happened in setting up or sending the request that triggered an Error
       return left(
         DioRequestFailure(
-          message: '${S.current.unknownFailureOnApiCall}: ${e.message}',
+          message: '${S.current.unknownConnectionErrorFromApi}: ${e.message}',
           errorType: e.type,
         ),
       );
@@ -204,7 +104,101 @@ Future<Either<Failure, T?>> safeRequestWhitNull<T>(
   } catch (e) {
     injector<LoggerService>().printErrorLog(e.toString());
     return left(
-      UnknownFailure(message: '${S.current.unknownFailureOnApiCall}: $e'),
+      UnknownFailure(message: '${S.current.unknownConnectionErrorFromApi}: $e'),
+    );
+  }
+}
+
+Future<Either<Failure, T?>> safeRequestWhitNull<T>(
+  FutureOr<T?> Function() computation,
+) async {
+  try {
+    final response = await computation();
+
+    return right(response);
+  } on DioError catch (e) {
+    // The request was made and the server responded with a status code
+    // that falls out of the range of 2xx and is also not 304.
+    if (e.response != null) {
+      if (e.response!.statusCode == 401) {
+        return left(
+          UnauthorizedFailure(
+            message: S.current.unauthorized,
+            errorType: e.type,
+            statusCode: e.response?.statusCode,
+          ),
+        );
+      } else if (e.response!.statusCode == 403) {
+        return left(
+          ForbiddenFailure(
+            message: S.current.invalidToken,
+            errorType: e.type,
+            statusCode: e.response?.statusCode,
+          ),
+        );
+      } else if (e.response!.statusCode == 404) {
+        return left(
+          NotFoundFailure(
+            message: S.current.nothingFound,
+            errorType: e.type,
+            statusCode: e.response?.statusCode,
+          ),
+        );
+      } else if (e.response!.statusCode == 500) {
+        return left(
+          InternalServerFailure(
+            message: S.current.internalServerError,
+            errorType: e.type,
+            statusCode: e.response?.statusCode,
+          ),
+        );
+      } else if (e.response!.statusCode == 502) {
+        return left(
+          BadGatewayFailure(
+            message: S.current.badGateway,
+            errorType: e.type,
+            statusCode: e.response?.statusCode,
+          ),
+        );
+      } else if (e.response!.statusCode == 503) {
+        return left(
+          ServiceUnavailableFailure(
+            message: S.current.serviceUnavailable,
+            errorType: e.type,
+            statusCode: e.response?.statusCode,
+          ),
+        );
+      } else if (e.response!.statusCode == 504) {
+        return left(
+          GatewayTimeOutFailure(
+            message: S.current.gatewayTimeOut,
+            errorType: e.type,
+            statusCode: e.response?.statusCode,
+          ),
+        );
+      } else {
+        return left(
+          DioServerFailure(
+            message:
+                'Error ${e.response?.statusCode} ${S.current.fromApi.toLowerCase()}: ${e.response!.data}',
+            errorType: e.type,
+            statusCode: e.response?.statusCode,
+          ),
+        );
+      }
+    } else {
+      // Something happened in setting up or sending the request that triggered an Error
+      return left(
+        DioRequestFailure(
+          message: '${S.current.unknownConnectionErrorFromApi}: ${e.message}',
+          errorType: e.type,
+        ),
+      );
+    }
+  } catch (e) {
+    injector<LoggerService>().printErrorLog(e.toString());
+    return left(
+      UnknownFailure(message: '${S.current.unknownConnectionErrorFromApi}: $e'),
     );
   }
 }

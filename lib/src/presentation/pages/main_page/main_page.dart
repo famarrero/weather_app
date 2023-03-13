@@ -1,10 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:weather_app/src/presentation/app/lang/l10n.dart';
 import 'package:weather_app/src/presentation/app/theme/colors.dart';
 import 'package:weather_app/src/presentation/pages/main_page/components/side_bar/side_bar.dart';
 import 'package:weather_app/src/presentation/pages/main_page/cubit/main_cubit.dart';
+import 'package:weather_app/src/routes/routes.gr.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -24,18 +27,7 @@ class _MainPageState extends State<MainPage> {
         builder: (context) {
           return WillPopScope(
             onWillPop: onWillPop,
-            child: ColoredBox(
-              color: AppColors.primaryBlue,
-              child: SafeArea(
-                child: Scaffold(
-                  key: context.read<MainCubit>().scaffoldKey,
-                  drawer: const SideBar(),
-                  body: Column(
-                    children: [],
-                  ),
-                ),
-              ),
-            ),
+            child: const MainPageContent(),
           );
         },
       ),
@@ -57,5 +49,37 @@ class _MainPageState extends State<MainPage> {
     } else {
       return Future.value(true);
     }
+  }
+}
+
+class MainPageContent extends StatelessWidget {
+  const MainPageContent({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: AppColors.primaryBlue,
+      child: SafeArea(
+        child: Scaffold(
+          key: context.read<MainCubit>().scaffoldKey,
+          drawer: const SideBar(),
+          body: Column(
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      AutoRouter.of(context)
+                          .push(const CitiesManagePageRoute());
+                    },
+                    icon: const Icon(Iconsax.buliding),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

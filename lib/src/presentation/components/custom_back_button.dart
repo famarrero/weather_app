@@ -16,13 +16,13 @@ class CustomBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterialLocalizations(context));
     return IconButton(
-      splashRadius: 25,
+      splashRadius: 20,
       icon: icon != null
           ? Icon(icon)
           : const Icon(
               Iconsax.arrow_left_2,           
             ),
-      color: color ?? Colors.white,
+      color: color ?? Theme.of(context).primaryColor,
       tooltip: MaterialLocalizations.of(context).backButtonTooltip,
       onPressed: () {
         if (onPressed != null) {

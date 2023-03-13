@@ -6,7 +6,7 @@ const kCorner = 10.0;
 
 const kIconSize = 25.0;
 
-const kPagePadding = 8.0;
+const kPagePadding = 24.0;
 
 const kSeparatedPadding = 14.0;
 

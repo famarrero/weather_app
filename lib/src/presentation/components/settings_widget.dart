@@ -74,7 +74,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       height: 18,
                     ),
                     Text(
-                      S.of(context).seoChangeFontSizeText,
+                      S.of(context).changeFontSizeTextExample,
                       style: textStyleBody.copyWith(
                           fontSize: context.read<AppCubit>().state.fontSize,
                           color: Colors.white),

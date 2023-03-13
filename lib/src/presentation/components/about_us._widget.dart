@@ -39,15 +39,12 @@ class AboutUsWidget extends StatelessWidget {
           textAlign: TextAlign.center,
           text: TextSpan(
             style: textStyleTitle.copyWith(
-                color: Theme.of(context).textTheme.bodyText1!.color),
+              color: Theme.of(context).textTheme.bodyLarge!.color,
+            ),
             children: <TextSpan>[
               TextSpan(
                 text: '${S.current.appName}: ',
                 style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              TextSpan(
-                text: S.of(context).about,
-                style: textStyleBody.copyWith(fontSize: 14),
               ),
             ],
           ),
