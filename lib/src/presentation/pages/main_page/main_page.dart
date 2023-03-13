@@ -18,19 +18,26 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: onWillPop,
-      child: ColoredBox(
-        color: AppColors.primaryBlue,
-        child: SafeArea(
-          child: Scaffold(
-            key: context.read<MainCubit>().scaffoldKey,
-            drawer: const SideBar(),        
-            body: Column(
-              children: [],
+    return BlocProvider(
+      create: (context) => MainCubit(),
+      child: Builder(
+        builder: (context) {
+          return WillPopScope(
+            onWillPop: onWillPop,
+            child: ColoredBox(
+              color: AppColors.primaryBlue,
+              child: SafeArea(
+                child: Scaffold(
+                  key: context.read<MainCubit>().scaffoldKey,
+                  drawer: const SideBar(),
+                  body: Column(
+                    children: [],
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
