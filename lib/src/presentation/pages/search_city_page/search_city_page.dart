@@ -34,7 +34,7 @@ class _SearchCityPageState extends State<SearchCityPage> {
     super.dispose();
   }
 
-  void _getFoundCities() {
+  void _getFoundCities(BuildContext context) {
     if (_searchCityController.text.isEmpty) {
       setState(() {
         _searchCityErrorText = S.of(context).fieldRequired;
@@ -80,7 +80,7 @@ class _SearchCityPageState extends State<SearchCityPage> {
                   ),
                   Expanded(
                     child: TextButton(
-                      onPressed: _getFoundCities,
+                      onPressed: () => _getFoundCities(context),
                       child: Text(S.of(context).search),
                     ),
                   )
@@ -96,7 +96,7 @@ class _SearchCityPageState extends State<SearchCityPage> {
                       iconData: Iconsax.warning_2,
                       title: S.of(context).errorOcurred,
                       failure: state.foundCities.failure,
-                      retry: _getFoundCities,
+                      retry: () => _getFoundCities(context),
                     );
                   } else if (state.foundCities.hasSuccessData) {
                     return ListView.builder(
