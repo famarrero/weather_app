@@ -1,2 +1,2 @@
-# monitor-web
-A flutter project for the SEO WebMaster.
+# weather_app
+A flutter app to show weather by city.
