@@ -1,0 +1,139 @@
+name: weather_app
+description: A Flutter application to show the weather by cities.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.15.1 <3.0.0"
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  auto_route: ^5.0.1
+  azlistview: ^2.0.0
+  bloc: ^8.1.0
+  built_collection: ^5.1.1
+  built_value: ^8.4.1
+  carousel_slider: ^4.1.1
+  connectivity_plus: 3.0.3
+  cupertino_icons: ^1.0.5
+  dartz: ^0.10.0
+  device_info_plus: ^8.1.0
+  device_preview: ^1.1.0
+  diacritic: ^0.1.3
+  dio: ^4.0.6
+  dio_logs_manager: ^0.1.1
+  easy_mask: ^2.0.1
+  equatable: ^2.0.5
+  flutter:
+    sdk: flutter
+  flutter_animate: ^1.0.0
+  flutter_bloc: ^8.1.1
+  flutter_local_notifications: ^9.5.2
+  flutter_localizations:
+    sdk: flutter
+  flutter_svg: ^2.0.1
+  flutter_typeahead: 4.0.0
+  font_awesome_flutter: ^10.2.1
+  freezed_annotation: ^2.1.0
+  get_it: ^7.2.0
+  google_fonts: ^3.0.1
+  iconsax: ^0.0.8
+  intl: ^0.17.0
+  intl_utils: ^2.8.1
+  logger: ^1.1.0
+  oktoast: ^3.3.0
+  package_info_plus: ^1.4.3+1
+  path: ^1.8.1
+  path_provider: ^2.0.11
+  provider: ^6.0.3
+  reactive_forms: ^14.1.0
+  rx_shared_preferences: ^3.0.0
+  rxdart: ^0.27.2
+  scroll_to_index: ^2.1.0
+  shared_preferences: ^2.0.15
+  sizer: ^2.0.15
+  smooth_page_indicator: ^1.0.0+2
+  sqflite: ^2.0.3+1
+  sqlite3_flutter_libs: ^0.5.10
+  timeline_tile: ^2.0.0
+  url_launcher: ^6.1.5
+  uuid: ^3.0.6
+
+# dependency_overrides:
+#   scrollable_positioned_list: ^0.2.3
+dev_dependencies:
+  auto_route_generator: ^5.0.2
+  bloc_test: ^9.1.0
+  build_runner: ^2.2.1
+  built_value_generator: ^8.4.1
+  flutter_gen_runner: ^5.2.0
+  flutter_launcher_icons: ^0.10.0
+  flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.2.2
+  flutter_test:
+    sdk: flutter
+  freezed: ^2.1.0+1
+  json_serializable: ^6.3.2
+  lint: ^1.7.2
+  syncfusion_flutter_charts: ^20.3.57
+  syncfusion_flutter_datagrid: ^20.3.58
+  syncfusion_flutter_gauges: ^20.3.58
+
+# Flutter Generator For Assets
+flutter_gen:
+  output: lib/src/presentation/app/assets # Optional (default: lib/gen/)
+  lineLength: 80 # Optional (default: 80)
+
+  # Optional
+  integrations:
+    flutter_svg: true
+    flare_flutter: true
+
+flutter:
+  uses-material-design: true
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Black.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+        - asset: assets/fonts/Roboto-Light.ttf
+        - asset: assets/fonts/Roboto-Medium.ttf
+        - asset: assets/fonts/Roboto-Regular.ttf
+
+  assets:
+    - assets/
+    - assets/images/
+    - assets/svgs/
+    - assets/fonts/
+
+flutter_intl:
+  enabled: true
+  arb_dir: assets/lang
+  output_dir: lib/src/presentation/app/lang
+
+# Icon Generator
+# run this: flutter pub run flutter_launcher_icons:main
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/isotype_weather_app.png"
+
+# Splash Generator
+# run this: flutter pub run flutter_native_splash:create
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/isotype_weather_app.png
+  web: false
+
+# For rename project name and id
+# flutter pub global activate rename
+# flutter pub global run rename --bundleId com.famarrero.weather_app
+# flutter pub global run rename --appname "Weather app"
