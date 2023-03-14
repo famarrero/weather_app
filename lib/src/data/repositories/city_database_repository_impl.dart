@@ -1,5 +1,4 @@
 import 'package:drift/drift.dart';
-import 'package:flutter/material.dart';
 import 'package:weather_app/src/data/data_sources/local/database/daos/city/city_dao.dart';
 import 'package:weather_app/src/data/data_sources/local/database/drift_database.dart';
 import 'package:weather_app/src/domain/entities/city/city_entity.dart';
@@ -18,6 +17,7 @@ class CityDatabaseRepositoryImpl implements CityDatabaseRepository {
       country: Value(city.country),
       lat: Value(city.lat),
       lon: Value(city.lon),
+      current: Value(city.current),
     );
 
     return _cityDao.insertCity(citiesCompanion);
@@ -57,6 +57,11 @@ class CityDatabaseRepositoryImpl implements CityDatabaseRepository {
     return _cityDao.deleteAllCities();
   }
 
+  @override
+  Future setCityAsCurrentById(int id) {
+    return _cityDao.setCityAsCurrentById(id);
+  }
+
   CityEntity _mapDBEntityIntoCityEntity(CitiesTableEntity dbEntity) {
     return CityEntity(
       (b) => b
@@ -65,7 +70,8 @@ class CityDatabaseRepositoryImpl implements CityDatabaseRepository {
         ..state = dbEntity.state
         ..country = dbEntity.country
         ..lat = dbEntity.lat
-        ..lon = dbEntity.lon,
+        ..lon = dbEntity.lon
+        ..current = dbEntity.current,
     );
   }
 }

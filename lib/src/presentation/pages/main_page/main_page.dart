@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:weather_app/src/injector.dart';
 import 'package:weather_app/src/presentation/app/lang/l10n.dart';
 import 'package:weather_app/src/presentation/app/theme/colors.dart';
 import 'package:weather_app/src/presentation/pages/main_page/components/side_bar/side_bar.dart';
@@ -22,7 +23,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MainCubit(),
+      create: (context) => MainCubit(injector()),
       child: Builder(
         builder: (context) {
           return WillPopScope(
@@ -58,7 +59,7 @@ class MainPageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: AppColors.primaryBlue,
+      color: AppColors.secondaryColor,
       child: SafeArea(
         child: Scaffold(
           key: context.read<MainCubit>().scaffoldKey,

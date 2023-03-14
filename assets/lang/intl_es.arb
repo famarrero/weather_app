@@ -31,6 +31,14 @@
     "name": "Nombre",
     "state": "Estado",
     "countryCode": "Código de país",
-    "myCities": "Mis ciudades"
+    "myCities": "Mis ciudades",
+    "errorDeleteCityInDB": "Error al eliminar la ciudad en la base de datos",
+    "errorSaveCityInDB": "Error al guardar la ciudad en la base de datos",
+    "errorChangeTheCurrentCity": "Error al establecer la ciudad predeterminada",
+    "showInMap": "Mostrar en el mapa",
+    "showInMapThisCity": "¿Desea ver esta ciudad en el mapa?",
+    "deleteThisCity": "Eliminar esta ciudad",
+    "doYouWantDeleteThisCity": "¿Desea eliminar esta ciudad?",
+    "delete": "Eliminar"
 
 }

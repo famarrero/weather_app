@@ -29,6 +29,9 @@ abstract class CityEntity implements Built<CityEntity, CityEntityBuilder> {
   @BuiltValueField(wireName: 'state')
   String? get state;
 
+  @BuiltValueField(wireName: 'current')
+  bool? get current;
+
   String toJson() {
     return json.encode(serializers.serializeWith(CityEntity.serializer, this));
   }

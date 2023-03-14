@@ -32,10 +32,21 @@ class MessageLookup extends MessageLookupByLibrary {
             "Check your internet connection"),
         "countryCode": MessageLookupByLibrary.simpleMessage("Código de país"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Tema ocuro"),
+        "delete": MessageLookupByLibrary.simpleMessage("Eliminar"),
+        "deleteThisCity":
+            MessageLookupByLibrary.simpleMessage("Eliminar esta ciudad"),
         "developmentOptions":
             MessageLookupByLibrary.simpleMessage("Opciones de desarrollo"),
+        "doYouWantDeleteThisCity": MessageLookupByLibrary.simpleMessage(
+            "¿Desea eliminar esta ciudad?"),
+        "errorChangeTheCurrentCity": MessageLookupByLibrary.simpleMessage(
+            "Error al establecer la ciudad predeterminada"),
+        "errorDeleteCityInDB": MessageLookupByLibrary.simpleMessage(
+            "Error al eliminar la ciudad en la base de datos"),
         "errorOcurred":
             MessageLookupByLibrary.simpleMessage("Ocurrió un error"),
+        "errorSaveCityInDB": MessageLookupByLibrary.simpleMessage(
+            "Error al guardar la ciudad en la base de datos"),
         "fieldRequired":
             MessageLookupByLibrary.simpleMessage("Campo requerido"),
         "fontSize": MessageLookupByLibrary.simpleMessage("Tamaño de fuente"),
@@ -63,6 +74,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "serviceUnavailable":
             MessageLookupByLibrary.simpleMessage("Servicio no disponible"),
         "settings": MessageLookupByLibrary.simpleMessage("Ajustes"),
+        "showInMap": MessageLookupByLibrary.simpleMessage("Mostrar en el mapa"),
+        "showInMapThisCity": MessageLookupByLibrary.simpleMessage(
+            "¿Desea ver esta ciudad en el mapa?"),
         "state": MessageLookupByLibrary.simpleMessage("Estado"),
         "tapToRetry":
             MessageLookupByLibrary.simpleMessage("Toca para reintentar"),

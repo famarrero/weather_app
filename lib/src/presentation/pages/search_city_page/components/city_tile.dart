@@ -8,6 +8,7 @@ import 'package:weather_app/src/injector.dart';
 import 'package:weather_app/src/presentation/app/theme/dimensions.dart';
 import 'package:weather_app/src/presentation/app/theme/text_styles.dart';
 import 'package:weather_app/src/presentation/components/custom_card.dart';
+import 'package:weather_app/src/presentation/components/custom_dialog_box.dart';
 import 'package:weather_app/src/presentation/pages/search_city_page/cubit/search_city_cubit.dart';
 
 class CityTile extends StatelessWidget {
@@ -26,51 +27,64 @@ class CityTile extends StatelessWidget {
       },
       margin: const EdgeInsets.symmetric(vertical: 4.0),
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.fromLTRB(4.0, 12.0, 16.0, 12.0),
         child: Row(
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  S.of(context).name,
-                  style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                        color: Theme.of(context).primaryColor,
-                      ),
-                ),
-                Text(
-                  city.name ?? S.of(context).noData,
-                  style: textStyleBody.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: kBigFontSized,
-                  ),
-                ),
-                Text(
-                  S.of(context).state,
-                  style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                        color: Theme.of(context).primaryColor,
-                      ),
-                ),
-                Text(city.state ?? S.of(context).noData),
-                Text(
-                  S.of(context).countryCode,
-                  style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                        color: Theme.of(context).primaryColor,
-                      ),
-                ),
-                Text(city.country ?? S.of(context).noData),
-              ],
-            ),
-            const Spacer(),
             if (city.lat != null && city.lon != null)
               IconButton(
                 splashRadius: 20,
                 onPressed: () {
-                  injector<UrlLauncherService>()
-                      .launchMaps(city.lat!, city.lon!);
+                  CustomDialogs().customDialogInformation(
+                    context: context,
+                    title: S.of(context).showInMap,
+                    message: S.of(context).showInMapThisCity,
+                    buttonPositiveName: S.of(context).ok,
+                    buttonPositiveAction: () {
+                      injector<UrlLauncherService>()
+                          .launchMaps(city.lat!, city.lon!);
+                    },
+                    buttonNegativeName: S.of(context).cancel,
+                  );
                 },
                 icon: const Icon(Iconsax.map),
               ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    S.of(context).name,
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: Theme.of(context).primaryColor,
+                        ),
+                  ),
+                  Text(
+                    city.name ?? S.of(context).noData,
+                    style: textStyleBody.copyWith(
+                      fontWeight: FontWeight.bold,
+                      fontSize: kBigFontSized,
+                    ),
+                  ),
+                  Text(
+                    S.of(context).state,
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: Theme.of(context).primaryColor,
+                        ),
+                  ),
+                  Text(city.state ?? S.of(context).noData),
+                  Text(
+                    S.of(context).countryCode,
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: Theme.of(context).primaryColor,
+                        ),
+                  ),
+                  Text(city.country ?? S.of(context).noData),
+                ],
+              ),
+            ),
+            // const Spacer(),
+            const Icon(Iconsax.add),
+           
           ],
         ),
       ),

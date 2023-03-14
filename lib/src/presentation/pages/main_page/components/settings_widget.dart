@@ -32,8 +32,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
       data: AppThemeData.appThemeData[AppTheme.Dark]!,
       child: CustomBottomModal(
         title: S.of(context).settings,
-        titleColor: AppColors.primaryOrange,
-        backgroundColor: AppColors.primaryBlue,
+        titleColor: AppColors.primaryColor,
+        backgroundColor: AppColors.secondaryColor,
         height: bottomModalHeight(context),
         child: Container(
           constraints:

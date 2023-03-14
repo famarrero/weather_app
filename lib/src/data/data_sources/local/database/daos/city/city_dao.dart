@@ -16,8 +16,7 @@ class CityDao extends DatabaseAccessor<AppDatabase> with _$CityDaoMixin {
   Future<int> insertCity(
     Insertable<CitiesTableEntity> city,
   ) =>
-      into(cities)
-          .insert(city, mode: InsertMode.insertOrReplace);
+      into(cities).insert(city, mode: InsertMode.insertOrReplace);
 
   Stream<List<CitiesTableEntity>> watchCities() {
     return select(cities).watch();
@@ -31,4 +30,30 @@ class CityDao extends DatabaseAccessor<AppDatabase> with _$CityDaoMixin {
       (delete(cities)..where((tbl) => tbl.id.equals(id))).go();
 
   Future deleteAllCities() => (delete(cities)).go();
+
+  Future<int> setCityAsCurrentById(int id) async {
+    //Get the current city
+    final currentCity = await (select(cities)
+          ..where(
+            (tbl) => tbl.current.equals(true),
+          ))
+        .getSingleOrNull();
+
+    if (currentCity != null) {
+      //Set the current city to false
+      await (update(cities)..where((tbl) => tbl.id.equals(currentCity.id)))
+          .write(
+        const CitiesCompanion(
+          current: Value(false),
+        ),
+      );
+    }
+
+    //Set the new current city to true
+    return (update(cities)..where((tbl) => tbl.id.equals(id))).write(
+      const CitiesCompanion(
+        current: Value(true),
+      ),
+    );
+  }
 }

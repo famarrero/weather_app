@@ -379,6 +379,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Error deleting the city in the database`
+  String get errorDeleteCityInDB {
+    return Intl.message(
+      'Error deleting the city in the database',
+      name: 'errorDeleteCityInDB',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error saving city in database`
+  String get errorSaveCityInDB {
+    return Intl.message(
+      'Error saving city in database',
+      name: 'errorSaveCityInDB',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error setting default city`
+  String get errorChangeTheCurrentCity {
+    return Intl.message(
+      'Error setting default city',
+      name: 'errorChangeTheCurrentCity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show on map`
+  String get showInMap {
+    return Intl.message(
+      'Show on map',
+      name: 'showInMap',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to see this city on the map?`
+  String get showInMapThisCity {
+    return Intl.message(
+      'Do you want to see this city on the map?',
+      name: 'showInMapThisCity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete this city`
+  String get deleteThisCity {
+    return Intl.message(
+      'Delete this city',
+      name: 'deleteThisCity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to delete this city?`
+  String get doYouWantDeleteThisCity {
+    return Intl.message(
+      'Do you want to delete this city?',
+      name: 'doYouWantDeleteThisCity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

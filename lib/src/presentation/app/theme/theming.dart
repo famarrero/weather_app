@@ -25,12 +25,12 @@ class AppThemeData {
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedLabelStyle: textStyleLabel.copyWith(
-          color: AppColors.primaryOrange,
+          color: AppColors.primaryColor,
           fontSize: 12,
           fontWeight: FontWeight.w600),
       unselectedLabelStyle:
           textStyleLabel.copyWith(color: Colors.blueGrey, fontSize: 10),
-      selectedItemColor: AppColors.primaryOrange,
+      selectedItemColor: AppColors.primaryColor,
       unselectedItemColor: Colors.blueGrey,
       backgroundColor: Colors.white,
       showUnselectedLabels: true,
@@ -41,12 +41,15 @@ class AppThemeData {
   static ThemeData get _lightThemeData {
     final baseLight = ThemeData.light();
     return baseLight.copyWith(
+      primaryColor: AppColors.primaryColor,
+      primaryColorDark: AppColors.primaryColorDark,
+      secondaryHeaderColor: AppColors.secondaryColor,
       colorScheme: baseLight.colorScheme.copyWith(
-        primary: AppColors.primaryOrange,
+        primary: AppColors.primaryColor,
+        secondary: AppColors.secondaryColor,
       ),
       scaffoldBackgroundColor: AppColors.platinum,
       canvasColor: Colors.white,
-      primaryColor: AppColors.primaryOrange,
       pageTransitionsTheme: const PageTransitionsTheme(
         builders: {
           TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
@@ -70,10 +73,12 @@ class AppThemeData {
   static ThemeData get _darkThemeData {
     final baseDark = ThemeData.dark();
     return baseDark.copyWith(
-      primaryColor: AppColors.primaryOrange,
-      secondaryHeaderColor: AppColors.primaryOrange,
+      primaryColor: AppColors.primaryColor,
+      primaryColorDark: AppColors.primaryColorDark,
+      secondaryHeaderColor: AppColors.secondaryColor,
       colorScheme: baseDark.colorScheme.copyWith(
-        primary: AppColors.primaryOrange,
+        primary: AppColors.primaryColor,
+        secondary: AppColors.secondaryColor,
       ),
       pageTransitionsTheme: const PageTransitionsTheme(
         builders: {

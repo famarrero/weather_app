@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:weather_app/src/core/utils/react_to_failure_snackbar.dart';
 import 'package:weather_app/src/domain/entities/city/city_entity.dart';
 import 'package:weather_app/src/injector.dart';
 import 'package:weather_app/src/presentation/app/lang/l10n.dart';
@@ -30,7 +31,14 @@ class _CitiesManagePageState extends State<CitiesManagePage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CitiesManageCubit(injector()),
-      child: BlocBuilder<CitiesManageCubit, CitiesManageState>(
+      child: BlocConsumer<CitiesManageCubit, CitiesManageState>(
+        listener: (context, state) {
+          if (state.setCityAsCurrent.failure != null) {
+            context.reactToFailureWithSnackBar(
+              failure: state.setCityAsCurrent.failure,
+            );
+          }
+        },
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(

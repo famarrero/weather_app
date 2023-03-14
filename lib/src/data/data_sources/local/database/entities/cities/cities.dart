@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:drift/drift.dart';
 
 @DataClassName('CitiesTableEntity')
@@ -13,4 +15,6 @@ class Cities extends Table {
   TextColumn get country => text().nullable()();
 
   TextColumn get state => text().nullable()();
+
+  BoolColumn get current => boolean().nullable()();
 }

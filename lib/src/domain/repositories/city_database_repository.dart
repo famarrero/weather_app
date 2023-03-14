@@ -10,4 +10,6 @@ abstract class CityDatabaseRepository {
   Future deleteCityById(int id);
 
   Future deleteAllCities();
+
+  Future setCityAsCurrentById(int id);
 }

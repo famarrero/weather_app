@@ -1,16 +1,14 @@
-import 'package:drift_db_viewer/drift_db_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:weather_app/src/core/services_manager/package_info_service.dart';
-import 'package:weather_app/src/data/data_sources/local/database/drift_database.dart';
 import 'package:weather_app/src/injector.dart';
 import 'package:weather_app/src/presentation/app/assets/assets.gen.dart';
 import 'package:weather_app/src/presentation/app/lang/l10n.dart';
 import 'package:weather_app/src/presentation/app/theme/colors.dart';
 import 'package:weather_app/src/presentation/app/theme/text_styles.dart';
 import 'package:weather_app/src/presentation/components/development_options/development_options_bottom_modal_sheet.dart';
-import 'package:weather_app/src/presentation/components/settings_widget.dart';
 import 'package:weather_app/src/presentation/components/side_bar/sidebar_menu_item.dart';
+import 'package:weather_app/src/presentation/pages/main_page/components/settings_widget.dart';
 
 class SideBar extends StatelessWidget {
   const SideBar({Key? key}) : super(key: key);
@@ -84,7 +82,7 @@ class SideBar extends StatelessWidget {
 
   BoxDecoration _buildDecoration(BuildContext context) {
     return const BoxDecoration(
-      color: AppColors.primaryBlue,
+      color: AppColors.secondaryColorDark,
       // boxShadow: [
       //   BoxShadow(color: AppColors.blue, blurRadius: 10),
       // ],

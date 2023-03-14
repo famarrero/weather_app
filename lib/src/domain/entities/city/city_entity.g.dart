@@ -60,6 +60,13 @@ class _$CityEntitySerializer implements StructuredSerializer<CityEntity> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.current;
+    if (value != null) {
+      result
+        ..add('current')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
     return result;
   }
 
@@ -98,6 +105,10 @@ class _$CityEntitySerializer implements StructuredSerializer<CityEntity> {
           result.state = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'current':
+          result.current = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
       }
     }
 
@@ -118,12 +129,20 @@ class _$CityEntity extends CityEntity {
   final String? country;
   @override
   final String? state;
+  @override
+  final bool? current;
 
   factory _$CityEntity([void Function(CityEntityBuilder)? updates]) =>
       (new CityEntityBuilder()..update(updates))._build();
 
   _$CityEntity._(
-      {this.id, this.name, this.lat, this.lon, this.country, this.state})
+      {this.id,
+      this.name,
+      this.lat,
+      this.lon,
+      this.country,
+      this.state,
+      this.current})
       : super._();
 
   @override
@@ -142,7 +161,8 @@ class _$CityEntity extends CityEntity {
         lat == other.lat &&
         lon == other.lon &&
         country == other.country &&
-        state == other.state;
+        state == other.state &&
+        current == other.current;
   }
 
   @override
@@ -154,6 +174,7 @@ class _$CityEntity extends CityEntity {
     _$hash = $jc(_$hash, lon.hashCode);
     _$hash = $jc(_$hash, country.hashCode);
     _$hash = $jc(_$hash, state.hashCode);
+    _$hash = $jc(_$hash, current.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -166,7 +187,8 @@ class _$CityEntity extends CityEntity {
           ..add('lat', lat)
           ..add('lon', lon)
           ..add('country', country)
-          ..add('state', state))
+          ..add('state', state)
+          ..add('current', current))
         .toString();
   }
 }
@@ -198,6 +220,10 @@ class CityEntityBuilder implements Builder<CityEntity, CityEntityBuilder> {
   String? get state => _$this._state;
   set state(String? state) => _$this._state = state;
 
+  bool? _current;
+  bool? get current => _$this._current;
+  set current(bool? current) => _$this._current = current;
+
   CityEntityBuilder();
 
   CityEntityBuilder get _$this {
@@ -209,6 +235,7 @@ class CityEntityBuilder implements Builder<CityEntity, CityEntityBuilder> {
       _lon = $v.lon;
       _country = $v.country;
       _state = $v.state;
+      _current = $v.current;
       _$v = null;
     }
     return this;
@@ -236,7 +263,8 @@ class CityEntityBuilder implements Builder<CityEntity, CityEntityBuilder> {
             lat: lat,
             lon: lon,
             country: country,
-            state: state);
+            state: state,
+            current: current);
     replace(_$result);
     return _$result;
   }

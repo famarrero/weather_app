@@ -31,5 +31,13 @@
     "name": "Name",
     "state": "State",
     "countryCode": "Country code",
-    "myCities": "My cities"
+    "myCities": "My cities",
+    "errorDeleteCityInDB": "Error deleting the city in the database",
+    "errorSaveCityInDB": "Error saving city in database",
+    "errorChangeTheCurrentCity": "Error setting default city",
+    "showInMap": "Show on map",
+    "showInMapThisCity": "Do you want to see this city on the map?",
+    "deleteThisCity": "Delete this city",
+    "doYouWantDeleteThisCity": "Do you want to delete this city?",
+    "delete": "Delete"
 }

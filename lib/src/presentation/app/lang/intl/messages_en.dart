@@ -31,9 +31,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "Check your internet connection"),
         "countryCode": MessageLookupByLibrary.simpleMessage("Country code"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "deleteThisCity":
+            MessageLookupByLibrary.simpleMessage("Delete this city"),
         "developmentOptions":
             MessageLookupByLibrary.simpleMessage("Development options"),
+        "doYouWantDeleteThisCity": MessageLookupByLibrary.simpleMessage(
+            "Do you want to delete this city?"),
+        "errorChangeTheCurrentCity":
+            MessageLookupByLibrary.simpleMessage("Error setting default city"),
+        "errorDeleteCityInDB": MessageLookupByLibrary.simpleMessage(
+            "Error deleting the city in the database"),
         "errorOcurred": MessageLookupByLibrary.simpleMessage("Error ocurred"),
+        "errorSaveCityInDB": MessageLookupByLibrary.simpleMessage(
+            "Error saving city in database"),
         "fieldRequired": MessageLookupByLibrary.simpleMessage("Field required"),
         "fontSize": MessageLookupByLibrary.simpleMessage("Font size"),
         "fromApi": MessageLookupByLibrary.simpleMessage("From server"),
@@ -59,6 +70,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "serviceUnavailable":
             MessageLookupByLibrary.simpleMessage("Service unavailable"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "showInMap": MessageLookupByLibrary.simpleMessage("Show on map"),
+        "showInMapThisCity": MessageLookupByLibrary.simpleMessage(
+            "Do you want to see this city on the map?"),
         "state": MessageLookupByLibrary.simpleMessage("State"),
         "tapToRetry": MessageLookupByLibrary.simpleMessage("Tap to retry"),
         "unauthorized": MessageLookupByLibrary.simpleMessage("Unauthorized"),

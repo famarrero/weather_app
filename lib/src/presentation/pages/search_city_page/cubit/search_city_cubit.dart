@@ -6,6 +6,7 @@ import 'package:weather_app/src/data/models/city/city_model.dart';
 import 'package:weather_app/src/domain/entities/city/city_entity.dart';
 import 'package:weather_app/src/domain/repositories/city_database_repository.dart';
 import 'package:weather_app/src/domain/repositories/remote_repository.dart';
+import 'package:weather_app/src/presentation/app/lang/l10n.dart';
 
 part 'search_city_state.dart';
 
@@ -64,9 +65,9 @@ class SearchCityCubit extends Cubit<SearchCityState> {
     } catch (e) {
       emit(
         state.copyWith(
-          insertCityInDB: const BaseState<bool>.fail(
+          insertCityInDB: BaseState<bool>.fail(
             UnknownFailure(
-              message: 'Error al guardar la ciudad en la base de datos',
+              message: S.current.errorSaveCityInDB,
             ),
           ),
         ),

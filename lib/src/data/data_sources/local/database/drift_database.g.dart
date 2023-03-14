@@ -44,8 +44,21 @@ class $CitiesTable extends Cities
   late final GeneratedColumn<String> state = GeneratedColumn<String>(
       'state', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _currentMeta =
+      const VerificationMeta('current');
   @override
-  List<GeneratedColumn> get $columns => [id, name, lat, lon, country, state];
+  late final GeneratedColumn<bool> current =
+      GeneratedColumn<bool>('current', aliasedName, true,
+          type: DriftSqlType.bool,
+          requiredDuringInsert: false,
+          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
+            SqlDialect.sqlite: 'CHECK ("current" IN (0, 1))',
+            SqlDialect.mysql: '',
+            SqlDialect.postgres: '',
+          }));
+  @override
+  List<GeneratedColumn> get $columns =>
+      [id, name, lat, lon, country, state, current];
   @override
   String get aliasedName => _alias ?? 'cities';
   @override
@@ -78,6 +91,10 @@ class $CitiesTable extends Cities
       context.handle(
           _stateMeta, state.isAcceptableOrUnknown(data['state']!, _stateMeta));
     }
+    if (data.containsKey('current')) {
+      context.handle(_currentMeta,
+          current.isAcceptableOrUnknown(data['current']!, _currentMeta));
+    }
     return context;
   }
 
@@ -99,6 +116,8 @@ class $CitiesTable extends Cities
           .read(DriftSqlType.string, data['${effectivePrefix}country']),
       state: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}state']),
+      current: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}current']),
     );
   }
 
@@ -116,13 +135,15 @@ class CitiesTableEntity extends DataClass
   final double? lon;
   final String? country;
   final String? state;
+  final bool? current;
   const CitiesTableEntity(
       {required this.id,
       this.name,
       this.lat,
       this.lon,
       this.country,
-      this.state});
+      this.state,
+      this.current});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -142,6 +163,9 @@ class CitiesTableEntity extends DataClass
     if (!nullToAbsent || state != null) {
       map['state'] = Variable<String>(state);
     }
+    if (!nullToAbsent || current != null) {
+      map['current'] = Variable<bool>(current);
+    }
     return map;
   }
 
@@ -156,6 +180,9 @@ class CitiesTableEntity extends DataClass
           : Value(country),
       state:
           state == null && nullToAbsent ? const Value.absent() : Value(state),
+      current: current == null && nullToAbsent
+          ? const Value.absent()
+          : Value(current),
     );
   }
 
@@ -169,6 +196,7 @@ class CitiesTableEntity extends DataClass
       lon: serializer.fromJson<double?>(json['lon']),
       country: serializer.fromJson<String?>(json['country']),
       state: serializer.fromJson<String?>(json['state']),
+      current: serializer.fromJson<bool?>(json['current']),
     );
   }
   @override
@@ -181,6 +209,7 @@ class CitiesTableEntity extends DataClass
       'lon': serializer.toJson<double?>(lon),
       'country': serializer.toJson<String?>(country),
       'state': serializer.toJson<String?>(state),
+      'current': serializer.toJson<bool?>(current),
     };
   }
 
@@ -190,7 +219,8 @@ class CitiesTableEntity extends DataClass
           Value<double?> lat = const Value.absent(),
           Value<double?> lon = const Value.absent(),
           Value<String?> country = const Value.absent(),
-          Value<String?> state = const Value.absent()}) =>
+          Value<String?> state = const Value.absent(),
+          Value<bool?> current = const Value.absent()}) =>
       CitiesTableEntity(
         id: id ?? this.id,
         name: name.present ? name.value : this.name,
@@ -198,6 +228,7 @@ class CitiesTableEntity extends DataClass
         lon: lon.present ? lon.value : this.lon,
         country: country.present ? country.value : this.country,
         state: state.present ? state.value : this.state,
+        current: current.present ? current.value : this.current,
       );
   @override
   String toString() {
@@ -207,13 +238,14 @@ class CitiesTableEntity extends DataClass
           ..write('lat: $lat, ')
           ..write('lon: $lon, ')
           ..write('country: $country, ')
-          ..write('state: $state')
+          ..write('state: $state, ')
+          ..write('current: $current')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, name, lat, lon, country, state);
+  int get hashCode => Object.hash(id, name, lat, lon, country, state, current);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -223,7 +255,8 @@ class CitiesTableEntity extends DataClass
           other.lat == this.lat &&
           other.lon == this.lon &&
           other.country == this.country &&
-          other.state == this.state);
+          other.state == this.state &&
+          other.current == this.current);
 }
 
 class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
@@ -233,6 +266,7 @@ class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
   final Value<double?> lon;
   final Value<String?> country;
   final Value<String?> state;
+  final Value<bool?> current;
   const CitiesCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
@@ -240,6 +274,7 @@ class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
     this.lon = const Value.absent(),
     this.country = const Value.absent(),
     this.state = const Value.absent(),
+    this.current = const Value.absent(),
   });
   CitiesCompanion.insert({
     this.id = const Value.absent(),
@@ -248,6 +283,7 @@ class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
     this.lon = const Value.absent(),
     this.country = const Value.absent(),
     this.state = const Value.absent(),
+    this.current = const Value.absent(),
   });
   static Insertable<CitiesTableEntity> custom({
     Expression<int>? id,
@@ -256,6 +292,7 @@ class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
     Expression<double>? lon,
     Expression<String>? country,
     Expression<String>? state,
+    Expression<bool>? current,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -264,6 +301,7 @@ class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
       if (lon != null) 'lon': lon,
       if (country != null) 'country': country,
       if (state != null) 'state': state,
+      if (current != null) 'current': current,
     });
   }
 
@@ -273,7 +311,8 @@ class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
       Value<double?>? lat,
       Value<double?>? lon,
       Value<String?>? country,
-      Value<String?>? state}) {
+      Value<String?>? state,
+      Value<bool?>? current}) {
     return CitiesCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
@@ -281,6 +320,7 @@ class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
       lon: lon ?? this.lon,
       country: country ?? this.country,
       state: state ?? this.state,
+      current: current ?? this.current,
     );
   }
 
@@ -305,6 +345,9 @@ class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
     if (state.present) {
       map['state'] = Variable<String>(state.value);
     }
+    if (current.present) {
+      map['current'] = Variable<bool>(current.value);
+    }
     return map;
   }
 
@@ -316,7 +359,8 @@ class CitiesCompanion extends UpdateCompanion<CitiesTableEntity> {
           ..write('lat: $lat, ')
           ..write('lon: $lon, ')
           ..write('country: $country, ')
-          ..write('state: $state')
+          ..write('state: $state, ')
+          ..write('current: $current')
           ..write(')'))
         .toString();
   }
