@@ -42,6 +42,13 @@ extension DateFormatted on DateTime {
     ).format(this);
   }
 
+  String get toFormattedTime {
+    return DateFormat(
+      'h:mm a',
+      Intl.getCurrentLocale(),
+    ).format(this);
+  }
+
   String get toShortFormattedDate {
     return DateFormat(
       'EEE, MMM d y',

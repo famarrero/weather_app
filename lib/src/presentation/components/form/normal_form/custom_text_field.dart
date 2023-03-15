@@ -27,6 +27,7 @@ class CustomTextField<T> extends StatefulWidget {
     this.onChanged,
     this.mandatory = false,
     this.errorText,
+    this.autofocus = false,
     this.decoration,
   }) : super(key: key);
 
@@ -47,6 +48,7 @@ class CustomTextField<T> extends StatefulWidget {
   final int? minLines;
   final int? maxLength;
   final bool? expands;
+  final bool autofocus;
   final bool isDense;
   final Function(String)? onSubmitted;
   final Function(String)? onChanged;
@@ -71,6 +73,7 @@ class _CustomTextFieldState<T> extends State<CustomTextField<T>> {
   Widget build(BuildContext context) {
     return TextField(      
       controller: controller,
+      autofocus: widget.autofocus,
       onChanged: widget.onChanged,
       onSubmitted: widget.onSubmitted,
       inputFormatters: widget.inputFormatters,

@@ -489,6 +489,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Add a city`
+  String get addCity {
+    return Intl.message(
+      'Add a city',
+      name: 'addCity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `5 day forecast`
+  String get fiveDayForecast {
+    return Intl.message(
+      '5 day forecast',
+      name: 'fiveDayForecast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Body Feeling`
+  String get feelsLike {
+    return Intl.message(
+      'Body Feeling',
+      name: 'feelsLike',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Humidity`
+  String get humidity {
+    return Intl.message(
+      'Humidity',
+      name: 'humidity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Atmospheric pressure`
+  String get pressure {
+    return Intl.message(
+      'Atmospheric pressure',
+      name: 'pressure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wind`
+  String get wind {
+    return Intl.message(
+      'Wind',
+      name: 'wind',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunrise`
+  String get sunrise {
+    return Intl.message(
+      'Sunrise',
+      name: 'sunrise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunset`
+  String get sunset {
+    return Intl.message(
+      'Sunset',
+      name: 'sunset',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

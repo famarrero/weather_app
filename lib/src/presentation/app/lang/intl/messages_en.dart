@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addACityToConsultHisWeather": MessageLookupByLibrary.simpleMessage(
             "Add a city to check its weather"),
+        "addCity": MessageLookupByLibrary.simpleMessage("Add a city"),
         "appName": MessageLookupByLibrary.simpleMessage("WeatherApp"),
         "badGateway": MessageLookupByLibrary.simpleMessage("Gateway error"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -49,11 +50,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorOcurred": MessageLookupByLibrary.simpleMessage("Error ocurred"),
         "errorSaveCityInDB": MessageLookupByLibrary.simpleMessage(
             "Error saving city in database"),
+        "feelsLike": MessageLookupByLibrary.simpleMessage("Body Feeling"),
         "fieldRequired": MessageLookupByLibrary.simpleMessage("Field required"),
+        "fiveDayForecast":
+            MessageLookupByLibrary.simpleMessage("5 day forecast"),
         "fontSize": MessageLookupByLibrary.simpleMessage("Font size"),
         "fromApi": MessageLookupByLibrary.simpleMessage("From server"),
         "gatewayTimeOut":
             MessageLookupByLibrary.simpleMessage("Gateway time out"),
+        "humidity": MessageLookupByLibrary.simpleMessage("Humidity"),
         "internalServerError":
             MessageLookupByLibrary.simpleMessage("Internal server error"),
         "invalidToken": MessageLookupByLibrary.simpleMessage("Invalid token"),
@@ -70,6 +75,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "pressAgainToExit":
             MessageLookupByLibrary.simpleMessage("Press again to exit"),
+        "pressure":
+            MessageLookupByLibrary.simpleMessage("Atmospheric pressure"),
         "retry": MessageLookupByLibrary.simpleMessage("Retry"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "searchCity": MessageLookupByLibrary.simpleMessage("Search city"),
@@ -80,10 +87,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "showInMapThisCity": MessageLookupByLibrary.simpleMessage(
             "Do you want to see this city on the map?"),
         "state": MessageLookupByLibrary.simpleMessage("State"),
+        "sunrise": MessageLookupByLibrary.simpleMessage("Sunrise"),
+        "sunset": MessageLookupByLibrary.simpleMessage("Sunset"),
         "tapToRetry": MessageLookupByLibrary.simpleMessage("Tap to retry"),
         "unauthorized": MessageLookupByLibrary.simpleMessage("Unauthorized"),
         "unknownConnectionErrorFromApi":
             MessageLookupByLibrary.simpleMessage("Unknown server error"),
-        "version": MessageLookupByLibrary.simpleMessage("Version")
+        "version": MessageLookupByLibrary.simpleMessage("Version"),
+        "wind": MessageLookupByLibrary.simpleMessage("Wind")
       };
 }

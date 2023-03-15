@@ -28,75 +28,65 @@ class _SettingsWidgetState extends State<SettingsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: AppThemeData.appThemeData[AppTheme.Dark]!,
-      child: CustomBottomModal(
-        title: S.of(context).settings,
-        titleColor: AppColors.primaryColor,
-        backgroundColor: AppColors.secondaryColor,
-        height: bottomModalHeight(context),
-        child: Container(
-          constraints:
-              const BoxConstraints(maxWidth: kMaxWidthConstraint * 1.2),
-          child: ListView(
-            shrinkWrap: true,
-            physics: const BouncingScrollPhysics(),
-            children: [
-              const SizedBox(
-                height: 16.0,
-              ),
-              //Theme
-              SettingTitle(
-                icon: Iconsax.moon,
-                title: S.of(context).darkTheme,
-                backgroundColor: Colors.black26,
-                trailing: CupertinoSwitch(
+    return CustomBottomModal(
+      title: S.of(context).settings,
+      height: bottomModalHeight(context),
+      child: ListView(
+        shrinkWrap: true,
+        physics: const BouncingScrollPhysics(),
+        children: [
+          const SizedBox(
+            height: 16.0,
+          ),
+          //Theme
+          SettingTitle(
+            icon: Iconsax.moon,
+            title: S.of(context).darkTheme,
+            trailing: CupertinoSwitch(
+              activeColor: Theme.of(context).primaryColor,
+              value: Theme.of(context).brightness == Brightness.dark,
+              onChanged: (value) {
+                context.read<AppCubit>().toggleTheme();
+                setState(() {});
+              },
+            ),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          //Font size
+          SettingTitle(
+            icon: Iconsax.text,
+            title: S.of(context).fontSize,
+            bottom: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 18,
+                ),
+                Text(
+                  S.of(context).changeFontSizeTextExample,
+                  style: textStyleBody.copyWith(
+                    fontSize: context.read<AppCubit>().state.fontSize,
+                    color: Colors.white,
+                  ),
+                ),
+                Slider(
                   activeColor: Theme.of(context).primaryColor,
-                  value: Theme.of(context).brightness == Brightness.dark,
-                  onChanged: (value) {
-                    context.read<AppCubit>().toggleTheme();
+                  value: context.read<AppCubit>().state.fontSize,
+                  onChanged: (changeValue) {
+                    context.read<AppCubit>().changeFontSize(changeValue);
                     setState(() {});
                   },
+                  // divisions: 4,
+                  min: 14,
+                  max: 24,
+                  label: '${context.read<AppCubit>().state.fontSize}',
                 ),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              //Font size
-              SettingTitle(
-                icon: Iconsax.text,
-                title: S.of(context).fontSize,
-                backgroundColor: Colors.black26,
-                bottom: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 18,
-                    ),
-                    Text(
-                      S.of(context).changeFontSizeTextExample,
-                      style: textStyleBody.copyWith(
-                          fontSize: context.read<AppCubit>().state.fontSize,
-                          color: Colors.white),
-                    ),
-                    Slider(
-                      activeColor: Theme.of(context).primaryColor,
-                      value: context.read<AppCubit>().state.fontSize,
-                      onChanged: (changeValue) {
-                        context.read<AppCubit>().changeFontSize(changeValue);
-                        setState(() {});
-                      },
-                      // divisions: 4,
-                      min: 14,
-                      max: 24,
-                      label: '${context.read<AppCubit>().state.fontSize}',
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

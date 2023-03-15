@@ -6,6 +6,7 @@ import 'package:weather_app/src/core/utils/react_to_failure_snackbar.dart';
 import 'package:weather_app/src/domain/entities/city/city_entity.dart';
 import 'package:weather_app/src/injector.dart';
 import 'package:weather_app/src/presentation/app/lang/l10n.dart';
+import 'package:weather_app/src/presentation/app/theme/colors.dart';
 import 'package:weather_app/src/presentation/app/theme/dimensions.dart';
 import 'package:weather_app/src/presentation/components/custom_back_button.dart';
 import 'package:weather_app/src/presentation/components/empty_view_info_widget.dart';
@@ -45,22 +46,27 @@ class _CitiesManagePageState extends State<CitiesManagePage> {
           }
         },
         builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(S.of(context).myCities),
-              centerTitle: true,
-              leading: const CustomBackButton(),
-            ),
-            body: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: kPagePadding),
-              child: Column(
-                children: [
-                  const SearchCityButton(),
-                  const SizedBox(height: 24.0),
-                  Expanded(
-                    child: _buildMyCitiesStream(state.myCities.listData),
+          return ColoredBox(
+            color: Theme.of(context).primaryColor,
+            child: SafeArea(
+              child: Scaffold(
+                appBar: AppBar(
+                  title: Text(S.of(context).myCities),
+                  centerTitle: true,
+                  leading: const CustomBackButton(),
+                ),
+                body: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: kPagePadding),
+                  child: Column(
+                    children: [
+                      const SearchCityButton(),
+                      const SizedBox(height: 24.0),
+                      Expanded(
+                        child: _buildMyCitiesStream(state.myCities.listData),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           );

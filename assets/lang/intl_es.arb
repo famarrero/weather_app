@@ -42,5 +42,13 @@
     "delete": "Eliminar",
     "cityHasNotCoordinates": "La ciudad no tiene coordenadas",
     "noCurrentCitySelectedYet": "Todavía no has selecionado ninguna ciudad",
-    "addACityToConsultHisWeather": "Agrege una ciudad para poder consultar su estado del tiempo"
+    "addACityToConsultHisWeather": "Agrege una ciudad para poder consultar su estado del tiempo",
+    "addCity": "Adicionar una ciudad",
+    "fiveDayForecast": "Pronóstico de los próximos 5 días",
+    "feelsLike": "Sensacion corporal",
+    "humidity": "Humedad",
+    "pressure": "Persión atmosferica",
+    "wind": "Viento",
+    "sunrise": "Salida del Sol",
+    "sunset": "Puesta del Sol"
 }

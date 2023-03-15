@@ -8,6 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:logging/logging.dart';
 import 'package:weather_app/src/core/utils/env_config.dart';
 
+//This is a wrong, never put your token in a way like this
 const appid = '529c4b03d5badc1f4e6e1ae66b8403c1';
 
 const String BASE_URL_DEV = 'http://api.openweathermap.org';
