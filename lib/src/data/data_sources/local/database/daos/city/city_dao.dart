@@ -1,5 +1,4 @@
 import 'package:drift/drift.dart';
-import 'package:flutter/material.dart';
 import 'package:weather_app/src/data/data_sources/local/database/drift_database.dart';
 import 'package:weather_app/src/data/data_sources/local/database/entities/cities/cities.dart';
 
@@ -55,5 +54,15 @@ class CityDao extends DatabaseAccessor<AppDatabase> with _$CityDaoMixin {
         current: Value(true),
       ),
     );
+  }
+
+  Stream<CitiesTableEntity?> watchCurrentCity() {
+    return (select(cities)..where((tbl) => tbl.current.equals(true)))
+        .watchSingleOrNull();
+  }
+
+  Future<CitiesTableEntity?> getCurrentCity() {
+    return (select(cities)..where((tbl) => tbl.current.equals(true)))
+        .getSingleOrNull();
   }
 }

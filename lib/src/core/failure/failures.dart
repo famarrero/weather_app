@@ -216,3 +216,9 @@ class NoConnectivityFailure extends Failure {
   @override
   List<Object?> get props => [message];
 }
+
+class NoCurrentCityFailure extends Failure {
+  const NoCurrentCityFailure({required String message}) : super(message);
+  @override
+  List<Object?> get props => [message];
+}

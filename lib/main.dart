@@ -10,6 +10,7 @@ import 'package:weather_app/src/injector.dart';
 import 'package:weather_app/src/presentation/app/lang/l10n.dart';
 import 'package:weather_app/src/presentation/manager/app_cubit/app_cubit.dart';
 import 'package:weather_app/src/presentation/pages/init_widget.dart';
+import 'package:weather_app/src/presentation/pages/main_page/cubit/main_cubit.dart';
 import 'package:weather_app/src/routes/routes.gr.dart';
 
 Future<void> main() async {
@@ -36,7 +37,13 @@ class MyApp extends StatelessWidget {
       ) {
         return MultiBlocProvider(
           providers: [
-            BlocProvider(create: (context) => AppCubit(injector())),           
+            BlocProvider(create: (context) => AppCubit(injector())),
+            BlocProvider(
+              create: (context) => MainCubit(
+                injector(),
+                injector(),
+              ),
+            ),
           ],
           child: BlocBuilder<AppCubit, AppState>(
             builder: (context, appState) {
@@ -46,7 +53,7 @@ class MyApp extends StatelessWidget {
                   builder: (context) => OKToast(
                     child: MaterialApp.router(
                       routeInformationParser: _appRouter.defaultRouteParser(),
-                      routerDelegate: _appRouter.delegate(),                    
+                      routerDelegate: _appRouter.delegate(),
                       title: 'WeatherApp',
                       theme: appState.themeData,
                       supportedLocales: S.delegate.supportedLocales,

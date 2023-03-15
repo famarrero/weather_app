@@ -12,6 +12,7 @@ import 'package:weather_app/src/presentation/components/empty_view_info_widget.d
 import 'package:weather_app/src/presentation/components/loading.dart';
 import 'package:weather_app/src/presentation/pages/cities_manage_page/components/city_manage_tile.dart';
 import 'package:weather_app/src/presentation/pages/cities_manage_page/cubit/cities_manage_cubit.dart';
+import 'package:weather_app/src/presentation/pages/main_page/cubit/main_cubit.dart';
 import 'package:weather_app/src/routes/routes.gr.dart';
 
 class CitiesManagePage extends StatefulWidget {
@@ -37,6 +38,10 @@ class _CitiesManagePageState extends State<CitiesManagePage> {
             context.reactToFailureWithSnackBar(
               failure: state.setCityAsCurrent.failure,
             );
+          }
+          if (state.setCityAsCurrent.data == true) {
+            context.read<MainCubit>().getWeatherDataByCityCoord();
+            Navigator.of(context).pop();
           }
         },
         builder: (context, state) {

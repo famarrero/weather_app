@@ -39,6 +39,8 @@
     "showInMapThisCity": "¿Desea ver esta ciudad en el mapa?",
     "deleteThisCity": "Eliminar esta ciudad",
     "doYouWantDeleteThisCity": "¿Desea eliminar esta ciudad?",
-    "delete": "Eliminar"
-
+    "delete": "Eliminar",
+    "cityHasNotCoordinates": "La ciudad no tiene coordenadas",
+    "noCurrentCitySelectedYet": "Todavía no has selecionado ninguna ciudad",
+    "addACityToConsultHisWeather": "Agrege una ciudad para poder consultar su estado del tiempo"
 }

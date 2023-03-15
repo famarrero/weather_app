@@ -12,4 +12,8 @@ abstract class CityDatabaseRepository {
   Future deleteAllCities();
 
   Future setCityAsCurrentById(int id);
+
+  Stream<CityEntity?> watchCurrentCity();
+
+  Future<CityEntity?> getCurrentCity();
 }

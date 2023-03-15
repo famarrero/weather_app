@@ -33,7 +33,7 @@ abstract class WeatherDataModel
   MainModel? get main;
 
   @BuiltValueField(wireName: 'visibility')
-  String? get visibility;
+  double? get visibility;
 
   @BuiltValueField(wireName: 'wind')
   WindModel? get wind;

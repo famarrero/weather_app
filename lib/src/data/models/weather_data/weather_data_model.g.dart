@@ -75,7 +75,7 @@ class _$WeatherDataModelSerializer
       result
         ..add('visibility')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+            specifiedType: const FullType(double)));
     }
     value = object.wind;
     if (value != null) {
@@ -160,7 +160,7 @@ class _$WeatherDataModelSerializer
           break;
         case 'visibility':
           result.visibility = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'wind':
           result.wind.replace(serializers.deserialize(value,
@@ -648,7 +648,7 @@ class _$WeatherDataModel extends WeatherDataModel {
   @override
   final MainModel? main;
   @override
-  final String? visibility;
+  final double? visibility;
   @override
   final WindModel? wind;
   @override
@@ -778,9 +778,9 @@ class WeatherDataModelBuilder
   MainModelBuilder get main => _$this._main ??= new MainModelBuilder();
   set main(MainModelBuilder? main) => _$this._main = main;
 
-  String? _visibility;
-  String? get visibility => _$this._visibility;
-  set visibility(String? visibility) => _$this._visibility = visibility;
+  double? _visibility;
+  double? get visibility => _$this._visibility;
+  set visibility(double? visibility) => _$this._visibility = visibility;
 
   WindModelBuilder? _wind;
   WindModelBuilder get wind => _$this._wind ??= new WindModelBuilder();

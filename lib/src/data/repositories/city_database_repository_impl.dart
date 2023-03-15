@@ -29,8 +29,8 @@ class CityDatabaseRepositoryImpl implements CityDatabaseRepository {
 
     final Stream<List<CityEntity>> mappedStream =
         watchCitiesStream.map<List<CityEntity>>(
-      (event) => event
-          .map<CityEntity>((p0) => _mapDBEntityIntoCityEntity(p0))
+      (cities) => cities
+          .map<CityEntity>((city) => _mapDBEntityIntoCityEntity(city))
           .toList(),
     );
 
@@ -41,8 +41,9 @@ class CityDatabaseRepositoryImpl implements CityDatabaseRepository {
   Future<List<CityEntity>> getCities() async {
     final getCitiesFuture = await _cityDao.getCities();
 
-    final List<CityEntity> mappedFuture =
-        getCitiesFuture.map((p0) => _mapDBEntityIntoCityEntity(p0)).toList();
+    final List<CityEntity> mappedFuture = getCitiesFuture
+        .map((city) => _mapDBEntityIntoCityEntity(city))
+        .toList();
 
     return mappedFuture;
   }
@@ -60,6 +61,33 @@ class CityDatabaseRepositoryImpl implements CityDatabaseRepository {
   @override
   Future setCityAsCurrentById(int id) {
     return _cityDao.setCityAsCurrentById(id);
+  }
+
+  @override
+  Stream<CityEntity?> watchCurrentCity() {
+    final watchCityStream = _cityDao.watchCurrentCity();
+
+    final Stream<CityEntity?> mappedStream =
+        watchCityStream.map<CityEntity?>((city) {
+      if (city != null) {
+        return _mapDBEntityIntoCityEntity(city);
+      } else {
+        return null;
+      }
+    });
+
+    return mappedStream;
+  }
+
+  @override
+  Future<CityEntity?> getCurrentCity() async {
+    final getCityFuture = await _cityDao.getCurrentCity();
+
+    if (getCityFuture != null) {
+      return _mapDBEntityIntoCityEntity(getCityFuture);
+    } else {
+      return null;
+    }
   }
 
   CityEntity _mapDBEntityIntoCityEntity(CitiesTableEntity dbEntity) {

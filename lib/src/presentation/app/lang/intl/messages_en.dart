@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addACityToConsultHisWeather": MessageLookupByLibrary.simpleMessage(
+            "Add a city to check its weather"),
         "appName": MessageLookupByLibrary.simpleMessage("WeatherApp"),
         "badGateway": MessageLookupByLibrary.simpleMessage("Gateway error"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -29,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "This is a text for change the font size"),
         "checkYourInternetConnection": MessageLookupByLibrary.simpleMessage(
             "Check your internet connection"),
+        "cityHasNotCoordinates":
+            MessageLookupByLibrary.simpleMessage("City has no coordinates"),
         "countryCode": MessageLookupByLibrary.simpleMessage("Country code"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
@@ -55,6 +59,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalidToken": MessageLookupByLibrary.simpleMessage("Invalid token"),
         "myCities": MessageLookupByLibrary.simpleMessage("My cities"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "noCurrentCitySelectedYet": MessageLookupByLibrary.simpleMessage(
+            "You haven\'t selected any city yet"),
         "noData": MessageLookupByLibrary.simpleMessage("No data"),
         "noResultsFound":
             MessageLookupByLibrary.simpleMessage("No results found"),

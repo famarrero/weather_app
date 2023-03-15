@@ -459,6 +459,36 @@ class S {
       args: [],
     );
   }
+
+  /// `City has no coordinates`
+  String get cityHasNotCoordinates {
+    return Intl.message(
+      'City has no coordinates',
+      name: 'cityHasNotCoordinates',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You haven't selected any city yet`
+  String get noCurrentCitySelectedYet {
+    return Intl.message(
+      'You haven\'t selected any city yet',
+      name: 'noCurrentCitySelectedYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a city to check its weather`
+  String get addACityToConsultHisWeather {
+    return Intl.message(
+      'Add a city to check its weather',
+      name: 'addACityToConsultHisWeather',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

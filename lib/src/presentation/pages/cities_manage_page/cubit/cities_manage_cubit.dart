@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:weather_app/src/core/failure/failures.dart';
 import 'package:weather_app/src/core/utils/base_state.dart';
 import 'package:weather_app/src/domain/entities/city/city_entity.dart';
@@ -65,7 +64,7 @@ class CitiesManageCubit extends Cubit<CitiesManageState> {
     if (city.id == null) return;
 
     try {
-      await _cityDatabaseRepository.setCityAsCurrentById(city.id!);
+      await _cityDatabaseRepository.setCityAsCurrentById(city.id!);   
 
       emit(
         state.copyWith(
@@ -73,7 +72,6 @@ class CitiesManageCubit extends Cubit<CitiesManageState> {
         ),
       );
     } catch (e) {
-      debugPrint(e.toString());
       emit(
         state.copyWith(
           setCityAsCurrent: BaseState<bool>.fail(
