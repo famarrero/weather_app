@@ -190,7 +190,19 @@ class MainTemDetails extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
+            if (weatherData.weather?.first.icon != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: Image.network(
+                  'https://openweathermap.org/img/wn/${weatherData.weather?.first.icon}@2x.png',
+                  height: 80,
+                  width: 80,
+                ),
+              ),
           ],
+        ),
+        const SizedBox(
+          height: 24.0,
         ),
         Text(
           weatherData.weather?.first.description ?? '',
