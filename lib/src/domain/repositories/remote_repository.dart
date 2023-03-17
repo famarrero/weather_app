@@ -15,7 +15,7 @@ abstract class RemoteRepository {
     required double lon,
   });
 
-  Future<Either<Failure, BuiltList<WeatherDataModel>?>>
+  Future<Either<Failure, BuiltList<WeatherDataModel>>>
       getFiveDayForeCastByCityCoord({
     required double lat,
     required double lon,

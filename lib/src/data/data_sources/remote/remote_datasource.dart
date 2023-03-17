@@ -73,6 +73,8 @@ class RemoteDataSourceImpl implements RemoteDataSource {
       queryParameters: <String, dynamic>{
         'lat': lat,
         'lon': lon,
+        'cnt': 35,
+        'units': 'metric'
       },
     );
 

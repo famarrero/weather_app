@@ -34,12 +34,12 @@ class RemoteRepositoryImpl implements RemoteRepository {
       );
 
   @override
-  Future<Either<Failure, BuiltList<WeatherDataModel>?>>
+  Future<Either<Failure, BuiltList<WeatherDataModel>>>
       getFiveDayForeCastByCityCoord({
     required double lat,
     required double lon,
   }) =>
-          safeRequestWhitNull(
+          safeRequest(
             () => _remoteDataSource.getFiveDayForeCastByCityCoord(
               lat: lat,
               lon: lon,

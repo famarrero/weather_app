@@ -40,9 +40,14 @@ class AppRouter extends _i5.RootStackRouter {
       );
     },
     FiveDayForecastPageRoute.name: (routeData) {
+      final args = routeData.argsAs<FiveDayForecastPageRouteArgs>();
       return _i5.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i3.FiveDayForecastPage(),
+        child: _i3.FiveDayForecastPage(
+          key: args.key,
+          lat: args.lat,
+          lon: args.lon,
+        ),
       );
     },
     SearchCityPageRoute.name: (routeData) {
@@ -100,14 +105,42 @@ class CitiesManagePageRoute extends _i5.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.FiveDayForecastPage]
-class FiveDayForecastPageRoute extends _i5.PageRouteInfo<void> {
-  const FiveDayForecastPageRoute()
-      : super(
+class FiveDayForecastPageRoute
+    extends _i5.PageRouteInfo<FiveDayForecastPageRouteArgs> {
+  FiveDayForecastPageRoute({
+    _i6.Key? key,
+    required double lat,
+    required double lon,
+  }) : super(
           FiveDayForecastPageRoute.name,
           path: '/five-day-forecast-page',
+          args: FiveDayForecastPageRouteArgs(
+            key: key,
+            lat: lat,
+            lon: lon,
+          ),
         );
 
   static const String name = 'FiveDayForecastPageRoute';
+}
+
+class FiveDayForecastPageRouteArgs {
+  const FiveDayForecastPageRouteArgs({
+    this.key,
+    required this.lat,
+    required this.lon,
+  });
+
+  final _i6.Key? key;
+
+  final double lat;
+
+  final double lon;
+
+  @override
+  String toString() {
+    return 'FiveDayForecastPageRouteArgs{key: $key, lat: $lat, lon: $lon}';
+  }
 }
 
 /// generated route for

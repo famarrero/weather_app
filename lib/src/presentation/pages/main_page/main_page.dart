@@ -122,7 +122,17 @@ class MainPageContent extends StatelessWidget {
                         ),
                         CustomOutlineButton(
                           text: S.of(context).fiveDayForecast,
-                          onPressed: () {},
+                          onPressed: () {
+                            if (weatherData.coord?.lat != null &&
+                                weatherData.coord?.lon != null) {
+                              AutoRouter.of(context).push(
+                                FiveDayForecastPageRoute(
+                                  lat: weatherData.coord!.lat!,
+                                  lon: weatherData.coord!.lon!,
+                                ),
+                              );
+                            }
+                          },
                         )
                       ],
                     ),
@@ -190,22 +200,57 @@ class MainTemDetails extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            if (weatherData.weather?.first.icon != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: Image.network(
-                  'https://openweathermap.org/img/wn/${weatherData.weather?.first.icon}@2x.png',
-                  height: 80,
-                  width: 80,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (weatherData.weather?.first.icon != null)
+                  Image.network(
+                    'https://openweathermap.org/img/wn/${weatherData.weather?.first.icon}@2x.png',
+                    height: 60,
+                    width: 60,
+                  ),
+                SizedBox(
+                  width: 52,
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Iconsax.arrow_up_3,
+                        size: 14,
+                      ),
+                      const SizedBox(width: 4.0),
+                      Text('${weatherData.main?.tempMax?.round()}'),
+                      const Spacer(),
+                      const Text('°C')
+                    ],
+                  ),
                 ),
-              ),
+                const SizedBox(
+                  height: 4.0,
+                ),
+                SizedBox(
+                  width: 52,
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Iconsax.arrow_down,
+                        size: 14,
+                      ),
+                      const SizedBox(width: 4.0),
+                      Text('${weatherData.main?.tempMin?.round()}'),
+                      const Spacer(),
+                      const Text('°C')
+                    ],
+                  ),
+                )
+              ],
+            )
           ],
         ),
         const SizedBox(
           height: 24.0,
         ),
         Text(
-          weatherData.weather?.first.description ?? '',
+          weatherData.weather?.first.main ?? '',
           style: textStyleTitle.copyWith(
             fontSize: kBigFontSized * 1.4,
           ),

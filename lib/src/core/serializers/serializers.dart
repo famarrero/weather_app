@@ -22,6 +22,10 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(CityModel)]),
         () => ListBuilder<CityModel>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(WeatherDataModel)]),
+        () => ListBuilder<WeatherDataModel>(),
       ))
     .build();
 
