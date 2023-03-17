@@ -41,6 +41,8 @@ class FiveDayForecastTile extends StatelessWidget {
                       'https://openweathermap.org/img/wn/${weather.weather?.first.icon}@2x.png',
                       height: 50,
                       width: 50,
+                      errorBuilder: (context, error, stackTrace) =>
+                          const SizedBox(),
                     ),
                   Text(
                     weather.weather?.first.main ?? '',

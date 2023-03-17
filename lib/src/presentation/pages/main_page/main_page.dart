@@ -208,6 +208,8 @@ class MainTemDetails extends StatelessWidget {
                     'https://openweathermap.org/img/wn/${weatherData.weather?.first.icon}@2x.png',
                     height: 60,
                     width: 60,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const SizedBox(),
                   ),
                 SizedBox(
                   width: 52,
