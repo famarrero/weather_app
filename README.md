@@ -21,4 +21,4 @@ You can change the font size
 
 It has an example of flavors to compile the app for different environments.
 
-It has debugging options where you can see the data stored in the BD Drift and the Dio requests that are made, also with the device_preview library you can test the app for different screen sizes.
+It has debugging options where you can see the data stored in the database Drift and the Dio requests that are made, also with the device_preview library you can test the app for different screen sizes.
