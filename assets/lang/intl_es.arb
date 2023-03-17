@@ -50,5 +50,7 @@
     "pressure": "Persión atmosferica",
     "wind": "Viento",
     "sunrise": "Salida del Sol",
-    "sunset": "Puesta del Sol"
+    "sunset": "Puesta del Sol",
+    "language": "Idioma"
+
 }

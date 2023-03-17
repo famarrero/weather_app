@@ -65,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "internalServerError":
             MessageLookupByLibrary.simpleMessage("Error interno del servidor"),
         "invalidToken": MessageLookupByLibrary.simpleMessage("Token invalido"),
+        "language": MessageLookupByLibrary.simpleMessage("Idioma"),
         "myCities": MessageLookupByLibrary.simpleMessage("Mis ciudades"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "noCurrentCitySelectedYet": MessageLookupByLibrary.simpleMessage(

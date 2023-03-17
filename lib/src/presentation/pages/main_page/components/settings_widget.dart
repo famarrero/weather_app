@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:weather_app/src/core/app_config/language.dart';
+import 'package:weather_app/src/domain/repositories/app_repository.dart';
+import 'package:weather_app/src/injector.dart';
 import 'package:weather_app/src/presentation/app/lang/l10n.dart';
 import 'package:weather_app/src/presentation/app/theme/colors.dart';
 import 'package:weather_app/src/presentation/app/theme/dimensions.dart';
@@ -49,6 +52,51 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 context.read<AppCubit>().toggleTheme();
                 setState(() {});
               },
+            ),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          //Language
+          SettingTitle(
+            icon: Iconsax.translate,
+            title: S.of(context).language,
+            bottom: Column(
+              children: [
+                const SizedBox(
+                  height: 8,
+                ),
+                RadioListTile<Language>(
+                  value: Language.es,
+                  groupValue: injector<AppRepository>().currentLanguage,
+                  onChanged: (changeValue) {
+                    context
+                        .read<AppCubit>()
+                        .changeLanguage(changeValue ?? Language.es);
+                    setState(() {});
+                  },
+                  title: Text(
+                    Language.es.languageName,
+                    style: textStyleBody,
+                  ),
+                  activeColor: Theme.of(context).primaryColor,
+                ),
+                RadioListTile<Language>(
+                  value: Language.en,
+                  groupValue: injector<AppRepository>().currentLanguage,
+                  onChanged: (changeValue) {
+                    context
+                        .read<AppCubit>()
+                        .changeLanguage(changeValue ?? Language.en);
+                    setState(() {});
+                  },
+                  title: Text(
+                    Language.en.languageName,
+                    style: textStyleBody,
+                  ),
+                  activeColor: Theme.of(context).primaryColor,
+                )
+              ],
             ),
           ),
           const SizedBox(

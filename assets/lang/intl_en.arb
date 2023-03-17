@@ -50,5 +50,6 @@
     "pressure": "Atmospheric pressure",
     "wind": "Wind",
     "sunrise": "Sunrise",
-    "sunset": "Sunset"
+    "sunset": "Sunset",
+    "language": "Language"
 }
