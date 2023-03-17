@@ -295,7 +295,7 @@ class UrlLauncherServiceImpl extends UrlLauncherService {
       uri = Uri(
           scheme: 'geo',
           host: '0,0',
-          queryParameters: <String, dynamic>{'q': query});
+          queryParameters: <String, dynamic>{'q': query},);
     } else if (Platform.isIOS) {
       final params = {
         'll': '$latitude,$longitude',

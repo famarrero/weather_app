@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/src/core/services_manager/logger_service.dart';
-import 'package:weather_app/src/injector.dart';
 import 'package:weather_app/src/presentation/manager/app_cubit/app_cubit.dart';
 
 class InitWidget extends StatefulWidget {
