@@ -36,7 +36,7 @@ class SunDetails extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            const Text('------------------------------------'),
+            const Text('--------------'),
             const Spacer(),
             Column(
               children: [
