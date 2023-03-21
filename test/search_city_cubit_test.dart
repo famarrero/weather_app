@@ -11,7 +11,7 @@ import 'package:weather_app/src/domain/repositories/city_database_repository.dar
 import 'package:weather_app/src/domain/repositories/remote_repository.dart';
 import 'package:weather_app/src/presentation/pages/search_city_page/cubit/search_city_cubit.dart';
 
-// Mock Cubit
+// Mock
 class MockRemoteRepository extends Mock implements RemoteRepository {}
 
 class MockCityDatabaseRepository extends Mock

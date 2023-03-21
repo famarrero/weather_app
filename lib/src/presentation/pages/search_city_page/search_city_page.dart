@@ -6,7 +6,6 @@ import 'package:weather_app/src/injector.dart';
 import 'package:weather_app/src/presentation/app/lang/l10n.dart';
 import 'package:weather_app/src/presentation/app/theme/dimensions.dart';
 import 'package:weather_app/src/presentation/components/custom_back_button.dart';
-import 'package:weather_app/src/presentation/components/empty_view_info_widget.dart';
 import 'package:weather_app/src/presentation/components/failure_widget.dart';
 import 'package:weather_app/src/presentation/components/form/normal_form/custom_text_field.dart';
 import 'package:weather_app/src/presentation/components/loading.dart';
@@ -72,7 +71,7 @@ class _SearchCityPageState extends State<SearchCityPage> {
                     children: [
                       Expanded(
                         flex: 4,
-                        child: CustomTextField(
+                        child: CustomTextField(                          
                           controller: _searchCityController,
                           autofocus: true,
                           hint: S.of(context).searchCity,
