@@ -293,9 +293,10 @@ class UrlLauncherServiceImpl extends UrlLauncherService {
       if (label != null) query += '($label)';
 
       uri = Uri(
-          scheme: 'geo',
-          host: '0,0',
-          queryParameters: <String, dynamic>{'q': query},);
+        scheme: 'geo',
+        host: '0,0',
+        queryParameters: <String, dynamic>{'q': query},
+      );
     } else if (Platform.isIOS) {
       final params = {
         'll': '$latitude,$longitude',
@@ -307,8 +308,10 @@ class UrlLauncherServiceImpl extends UrlLauncherService {
 
       uri = Uri.https('maps.apple.com', '/', params);
     } else {
-      uri = Uri.https('www.google.com', '/maps/search',
-          <String, dynamic>{'api': '1', 'query': '$latitude,$longitude'});
+      uri = Uri.https('www.google.com', '/maps/search', <String, dynamic>{
+        'api': '1',
+        'query': '$latitude,$longitude',
+      });
     }
 
     return uri;

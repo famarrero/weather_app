@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/src/core/utils/date_utils.dart';
-import 'package:weather_app/src/presentation/app/theme/dimensions.dart';
 import 'package:weather_app/src/presentation/components/form/form_decoration.dart';
 
 class CustomDatePicker extends StatelessWidget {

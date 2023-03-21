@@ -10,7 +10,7 @@ extension TimeX on TimeOfDay {
   String get toAMPM {
     final now = DateTime.now();
     final dt = DateTime(now.year, now.month, now.day, this.hour, this.minute);
-    final format = DateFormat("h:mm a");
+    final format = DateFormat('h:mm a');
     return format.format(dt);
   }
 }
